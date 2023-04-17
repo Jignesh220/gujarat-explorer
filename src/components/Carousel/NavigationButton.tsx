@@ -17,7 +17,7 @@ export default function NavigationButton() {
       }}
     >
       <Tooltip title="Prev" arrow placement="left">
-        <IconButton onClick={() => swiper.slidePrev()} className="text-black">
+        <IconButton onClick={() => swiper.slidePrev()} className="text-black text-lg">
           <ArrowCircleLeftTwoToneIcon color="primary" sx={{ fontSize: 35 }} />
         </IconButton>
       </Tooltip>
