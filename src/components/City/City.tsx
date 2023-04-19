@@ -180,9 +180,9 @@ export default function City() {
                   Ahmedabad, in western India, is the largest city in the state
                   of Gujarat. The Sabarmati River runs through its center. On
                   the western bank is the Gandhi Ashram at Sabarmati, which
-                  displays the spiritual leader's living quarters and artifacts.
+                  displays the spiritual leader&#39;s living quarters and artifacts.
                   Across the river, the Calico Museum of Textiles, once a cloth
-                  merchant's mansion, has a significant collection of antique
+                  merchant&#39;s mansion, has a significant collection of antique
                   and modern fabrics.
                 </div>
               </Stack>
@@ -246,7 +246,7 @@ export default function City() {
                     className="mySwiper text-white"
                   >
                     {images.map((img) => (
-                      <SwiperSlide>
+                      <SwiperSlide key={img.id}>
                         <div
                           className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
                           onClick={() => {

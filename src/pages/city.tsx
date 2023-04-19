@@ -4,7 +4,7 @@ import City from '@/components/City/City';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-export default function city() {
+export default function CityPage() {
     const useSearch = useSearchParams();
     const cityName = useSearch.get('c');
     const router = useRouter();
@@ -17,7 +17,7 @@ export default function city() {
   return (
     <div>
       <Head>
-        <title>Tourism App | {cityName ? cityName: ""}</title>
+        <title>Tourism App | {cityName ? (cityName): ("")}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="../images/Logo/logo.png" />
       </Head>
