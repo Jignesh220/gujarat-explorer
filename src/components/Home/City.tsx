@@ -9,6 +9,7 @@ import Typography from "@mui/joy/Typography";
 import Akshardham from "../../images/akashardham.webp";
 import { motion } from "framer-motion";
 import { blue, red, amber } from "@mui/material/colors";
+import Link from "next/link";
 
 export default function City() {
   return (
@@ -30,6 +31,7 @@ export default function City() {
           spacing={{xs: 2,md: 3}}
         >
           <Grid xs={6} lg={3}>
+            <Link href={'/city?c=ahmedabad'}>
             <motion.div
               whileHover={{
                 scale: 1.02,
@@ -70,8 +72,10 @@ export default function City() {
                 className="md:rounded-3xl min-[0px]:rounded-xl"
               />
             </motion.div>
+            </Link>
           </Grid>
           <Grid xs={6} lg={3}>
+          <Link href={'/city?c=gandhinagar'}>
             <motion.div
             whileHover={{
               scale: 1.02,
@@ -110,9 +114,10 @@ export default function City() {
                 height={1000}
                 className="md:rounded-3xl min-[0px]:rounded-xl"
               />
-            </motion.div>
+            </motion.div></Link>
           </Grid>
           <Grid xs={6} lg={3}>
+          <Link href={'/city?c=vadodara'}>
             <motion.div 
             whileHover={{
               scale: 1.02,
@@ -152,8 +157,10 @@ export default function City() {
                 className="md:rounded-3xl min-[0px]:rounded-xl"
               />
             </motion.div>
+            </Link>
           </Grid>
           <Grid xs={6} lg={3}>
+          <Link href={'/city?c=ahmedabad'}>
             <motion.div 
             whileHover={{
               scale: 1.02,
@@ -193,6 +200,7 @@ export default function City() {
                 className="md:rounded-3xl min-[0px]:rounded-xl"
               />
             </motion.div>
+            </Link>
           </Grid>
         </Grid>
       </div>
