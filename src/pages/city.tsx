@@ -9,8 +9,6 @@ export default function city() {
     const cityName = useSearch.get('c');
     const router = useRouter();
     React.useEffect(() => {
-      console.log('called!!');
-      
       setTimeout(() => {
         cityName? cityName?.length <= 3 ? router.push('/') : null : router.push('/')
       }, 500);

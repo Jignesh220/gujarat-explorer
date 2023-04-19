@@ -1,11 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Athiti,Suez_One } from "next/font/google";
+import { Suez_One,Aboreto,Alegreya,Capriola,Outfit } from "next/font/google";
 
-const athiti = Athiti({
+const aboreto = Aboreto({
   subsets: ["latin"],
-  variable: "--font-athiti",
-  weight: "700",
+  variable: "--font-aboreto",
+  weight: "400",
   style: "normal",
 });
 const suez_one = Suez_One({
@@ -14,10 +14,16 @@ const suez_one = Suez_One({
   weight: "400",
   style: "normal",
 });
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: "400",
+  style: "normal",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${athiti.variable,suez_one.variable} font-sans`}>
+    <main className={`${aboreto.variable} ${suez_one.variable} ${outfit.variable} font-sans`}>
       <Component {...pageProps} />
     </main>
   )

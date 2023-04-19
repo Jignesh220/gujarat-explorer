@@ -14,8 +14,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        athiti: ['var(--font-athiti)', ...fontFamily.sans],
+        aboreto: ['var(--font-aboreto)', ...fontFamily.sans],
         suezone: ['var(--font-suez_one)', ...fontFamily.sans],
+        outfit: ['var(--font-outfit)', ...fontFamily.sans],
       },
     },
   },
