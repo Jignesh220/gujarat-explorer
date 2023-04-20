@@ -1,14 +1,8 @@
 import React from "react";
 import { Grid, Container } from "@mui/joy";
 import Image from "next/image";
-import Box from "@mui/joy/Box";
-import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
-import Akshardham from "../../images/akashardham.webp";
 import { motion } from "framer-motion";
-import { blue, red, amber } from "@mui/material/colors";
+import { amber } from "@mui/material/colors";
 import Link from "next/link";
 
 export default function City() {
@@ -17,7 +11,7 @@ export default function City() {
       <div className="md:px-32 min-[0px]:px-8">
         <div className="md:pb-12 min-[0px]:pb-5">
           <div
-            className="md:text-9xl sm:text-5xl min-[0px]:text-5xl font-extrabold tracking-wider drop-shadow-2xl font-suezone"
+            className="md:text-9xl sm:text-5xl min-[0px]:text-5xl font-extrabold tracking-wider drop-shadow-xl shadow-slate-500 font-suezone"
             style={{
               color: "rgb(22,78,99,0.2)",
             }}

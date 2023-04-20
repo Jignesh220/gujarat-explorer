@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper";
 
-import { Button,IconButton, Tooltip } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
 import { useSwiper } from "swiper/react";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
@@ -110,7 +110,7 @@ export default function City() {
               lineHeight: "1.75rem",
             }}
           >
-            <ArrowCircleLeftTwoToneIcon color="primary" sx={{ fontSize: 40}} />
+            <ArrowCircleLeftTwoToneIcon color="primary" sx={{ fontSize: 40 }} />
           </IconButton>
         </Tooltip>
         <Tooltip title="Next" arrow placement="right">
@@ -133,7 +133,7 @@ export default function City() {
           >
             <ArrowCircleRightTwoToneIcon
               color="primary"
-              sx={{ fontSize: 40,  }}
+              sx={{ fontSize: 40 }}
             />
           </IconButton>
         </Tooltip>
@@ -180,10 +180,10 @@ export default function City() {
                   Ahmedabad, in western India, is the largest city in the state
                   of Gujarat. The Sabarmati River runs through its center. On
                   the western bank is the Gandhi Ashram at Sabarmati, which
-                  displays the spiritual leader&#39;s living quarters and artifacts.
-                  Across the river, the Calico Museum of Textiles, once a cloth
-                  merchant&#39;s mansion, has a significant collection of antique
-                  and modern fabrics.
+                  displays the spiritual leader&#39;s living quarters and
+                  artifacts. Across the river, the Calico Museum of Textiles,
+                  once a cloth merchant&#39;s mansion, has a significant
+                  collection of antique and modern fabrics.
                 </div>
               </Stack>
             </div>
@@ -267,18 +267,24 @@ export default function City() {
                             }}
                           />
                           <div
-                          className="md:rounded-3xl min-[0px]:rounded-2xl" 
-                          style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: "50%",
-                            transform: "translate(-50%,0%)",
-                            marginBottom: 15,
-                            
-                          }}>
-                            <Button variant="contained" color="primary" sx={{
-                              borderRadius: 8,
-                            }}>Explore</Button>
+                            className="md:rounded-3xl min-[0px]:rounded-2xl"
+                            style={{
+                              position: "absolute",
+                              bottom: 0,
+                              left: "50%",
+                              transform: "translate(-50%,0%)",
+                              marginBottom: 15,
+                            }}
+                          >
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              sx={{
+                                borderRadius: 8,
+                              }}
+                            >
+                              Explore
+                            </Button>
                           </div>
                         </div>
                       </SwiperSlide>
@@ -287,7 +293,7 @@ export default function City() {
                   </Swiper>
                 </div>
               </Grid>
-            </Grid>                                                             
+            </Grid>
           </div>
         </Grid>
       </Grid>
