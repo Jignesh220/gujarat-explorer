@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
     "@mui/joy": "^5.0.0-alpha.75",
+    "@mui/lab": "^5.0.0-alpha.127",
     "@splidejs/react-splide": "^0.7.12",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
@@ -26,7 +27,8 @@
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "swiper": "^9.2.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

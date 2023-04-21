@@ -3,17 +3,18 @@ import { auth } from "@/Firebase/Firebase";
 import { Button, Grid } from "@mui/joy";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const GridData = [
   {
     id: 1,
-    title: "Add Tranding Citys",
+    title: "Add Tranding Location",
     url: "add-tranding-citys",
   },
   {
     id: 2,
     title: "Add Citys",
-    url: "add-citys",
+    url: "cities",
   },
   {
     id: 3,
@@ -58,6 +59,7 @@ export default function Admin() {
                 borderRadius: '1.5rem',
                 cursor: 'pointer'
             }}>
+              <Link href={`/admin/${item.url}`}>
               <motion.div
                 whileHover={{
                   scale: 1.02,
@@ -77,6 +79,7 @@ export default function Admin() {
                   {item.title}
                 </div>
               </motion.div>
+              </Link>
             </Grid>
           ))}
           <Grid xs={2} sm={4} md={3}
