@@ -7,6 +7,7 @@ import {
   Grid,
   Input,
   Stack,
+  Textarea,
 } from "@mui/joy";
 import { Button } from "@mui/material";
 import { amber } from "@mui/material/colors";
@@ -31,6 +32,7 @@ import { LoadingButton } from "@mui/lab";
 
 interface FormState {
   cityName: string;
+  aboutCity: string;
   state: string;
   cityCode: string;
   coverImage: File | null;
@@ -43,10 +45,11 @@ export default function AddCity() {
   const storage = getStorage();
   const [loadingEvent, setloadingEvent] = React.useState(false);
   const [loadingEvent2, setloadingEvent2] = React.useState(false);
-  const [compalateEvent, setcompalateEvent] = React.useState('Upload')
-  const [compalateEvent2, setcompalateEvent2] = React.useState('submit')
+  const [compalateEvent, setcompalateEvent] = React.useState("Upload");
+  const [compalateEvent2, setcompalateEvent2] = React.useState("Submit");
   const [form, setForm] = React.useState<FormState>({
     cityName: "",
+    aboutCity:'',
     state: "",
     cityCode: "",
     coverImage: null,
@@ -87,14 +90,13 @@ export default function AddCity() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           setForm({ ...form, Percent: percent });
-          
         },
         (err: Error) => console.log(err),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             setForm({ ...form, ImageUrl: url });
             setloadingEvent(false);
-            setcompalateEvent('Done!!')
+            setcompalateEvent("Done!!");
           });
         }
       );
@@ -105,21 +107,27 @@ export default function AddCity() {
 
   const handleUploadData = async (e: React.FormEvent) => {
     e.preventDefault();
-    const DocId = uuidv4();
-    setloadingEvent2(true)
-    const ref = `india/${form.state}/cities/${DocId}`;
-    const citiesImformation = doc(firestore, ref);
-    const mySnapshot = await getDoc(citiesImformation);
-    if (!mySnapshot.exists()) {
-      await setDoc(citiesImformation, {
-        cityName: form.cityName,
-        state: form.state,
-        cityCode: form.cityCode,
-        coverImageUrl: form.ImageUrl,
-      }).then(()=>{
-        setloadingEvent2(false);
-        setcompalateEvent2('Your Document is Uploaded,Thank You!!')
-      })
+    if (form.ImageUrl !== "") {
+      const DocId = uuidv4();
+      setloadingEvent2(true);
+      const ref = `Gujarat/Cities/Home/${DocId}`;
+      const citiesImformation = doc(firestore, ref);
+      const mySnapshot = await getDoc(citiesImformation);
+      if (!mySnapshot.exists()) {
+        await setDoc(citiesImformation, {
+          cityName: form.cityName,
+          about: form.aboutCity,
+          state: form.state,
+          cityCode: form.cityCode,
+          coverImageUrl: form.ImageUrl,
+          cityId: DocId,
+        }).then(() => {
+          setloadingEvent2(false);
+          setcompalateEvent2("Your Document is Uploaded,Thank You!!");
+        });
+      }
+    } else {
+      alert("first upload cover image!!");
     }
   };
 
@@ -200,11 +208,30 @@ export default function AddCity() {
                 </FormLabel>
                 <Input
                   sx={{ "--Input-decoratorChildHeight": "45px" }}
-                  placeholder="mail@gmai.com"
+                  placeholder="city name"
                   type="text"
                   name="cityname"
                   onChange={(e) => {
                     setForm({ ...form, cityName: e.target.value });
+                  }}
+                  required
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel
+                  sx={(theme) => ({
+                    "--FormLabel-color": theme.vars.palette.primary.plainColor,
+                  })}
+                >
+                  About City
+                </FormLabel>
+                <Textarea
+                  sx={{ "--Input-decoratorChildHeight": "45px" }}
+                  minRows={12}
+                  placeholder="About city"
+                  name="cityname"
+                  onChange={(e) => {
+                    setForm({ ...form, aboutCity: e.target.value });
                   }}
                   required
                 />
@@ -292,13 +319,11 @@ export default function AddCity() {
                   >
                     {loadingEvent ? (
                       <div className="font-bold font-outfit tracking-wider">
-                        {form.Percent}
+                        {form.Percent} %
                       </div>
                     ) : (
                       <div className="font-bold font-outfit tracking-wider">
-                        {
-                          compalateEvent
-                        }
+                        {compalateEvent}
                       </div>
                     )}
                   </LoadingButton>
@@ -350,9 +375,7 @@ export default function AddCity() {
                 }}
               >
                 <div className="font-bold font-outfit tracking-wider">
-                  {
-                    compalateEvent2
-                  }
+                  {compalateEvent2}
                 </div>
               </LoadingButton>
             </Stack>

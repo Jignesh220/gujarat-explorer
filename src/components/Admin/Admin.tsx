@@ -19,7 +19,7 @@ const GridData = [
   {
     id: 3,
     title: "Add Citys information",
-    url: "add-citys-information",
+    url: "cityinformation",
   },
   {
     id: 4,
