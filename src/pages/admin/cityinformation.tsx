@@ -9,7 +9,7 @@ import AdminAppbar from "@/components/Reusable/AdminAppbar";
 import { Toolbar } from "@mui/material";
 import AddCityInfo from "@/components/Admin/AddCityInfo";
 
-export default function cityinformation() {
+export default function Cityinformation() {
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
