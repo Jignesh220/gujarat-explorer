@@ -198,7 +198,6 @@ export default function City() {
           </Grid>
         </Grid>
       </div>
-      <div className="min-h-screen"></div>
     </div>
   );
 }
