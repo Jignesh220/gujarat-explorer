@@ -710,6 +710,7 @@ const AddCityInfomation = () => {
           image3: image3.ImageUrl,
           image4: image4.ImageUrl,
           image5: image5.ImageUrl,
+          image6: image6.ImageUrl,
         }).then(() => {
           setImageUploadEvent({ ...imageUploadEvent, sendData: true });
           setloadingEvent2(false);

@@ -12,6 +12,7 @@ import { Button, IconButton, Tooltip } from "@mui/material";
 import { useSwiper } from "swiper/react";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
+import { EffectCreative } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -83,10 +84,9 @@ export default function City() {
     return (
       <Stack
         direction="row"
-        gap={2}
+        gap={1.5}
         justifyContent="start"
         sx={{
-          marginRight: 5,
           marginTop: 2,
         }}
       >
@@ -247,11 +247,27 @@ export default function City() {
                   >
                     {images.map((img) => (
                       <SwiperSlide key={img.id}>
-                        <div
-                          className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
-                          onClick={() => {
-                            setImageCover(img);
+                        <motion.div
+                          whileHover={{
+                            scale: 1.03,
                           }}
+                          initial={{
+                            opacity: 0,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                          }}
+                          transition={{
+                            duration: 0.8,
+                            ease: "easeIn",
+                          }}
+                          exit={{
+                            opacity:0
+                          }}
+                          className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
+                          // onClick={() => {
+                          //   setImageCover(img);
+                          // }}
                         >
                           <Image
                             src={img.src}
@@ -281,12 +297,15 @@ export default function City() {
                               color="primary"
                               sx={{
                                 borderRadius: 8,
+                                textTransform: "none",
                               }}
                             >
-                              Explore
+                              <div className="font-outfit font-bold tracking-wider">
+                                Explore
+                              </div>
                             </Button>
                           </div>
-                        </div>
+                        </motion.div>
                       </SwiperSlide>
                     ))}
                     <NavigationButton />
