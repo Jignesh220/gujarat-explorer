@@ -251,9 +251,6 @@ const AddLocation = () => {
         x: 0,
       }}
     >
-      <div className="my-8 text-center tracking-wider text-blue-600 font-bold text-4xl font-suezone">
-        Add Location
-      </div>
       <form
         className="mt-10 md:px-96 min-[0px]:px-8"
         onSubmit={handleUploadData}
@@ -402,6 +399,7 @@ const AddCityInfomation = () => {
   const storage = getStorage();
   const [city, setcity] = React.useState("");
   const [cityid, setcityid] = React.useState("");
+  const [locationId, setLocationId] = React.useState("");
   const [loadingEvent, setloadingEvent] = React.useState(false);
   const [loadingEvent2, setloadingEvent2] = React.useState(false);
   const [imageUploadEvent, setImageUploadEvent] = React.useState({
@@ -461,6 +459,11 @@ const AddCityInfomation = () => {
       handleGetId();
     }
   }, [form.cityCode]);
+  React.useEffect(() => {
+    if (form.locationName !== "") {
+      handleGetLocationId();
+    }
+  }, [form.locationName]);
 
   const handleGetId = async () => {
     const ref = `/Gujarat/Cities/Home`;
@@ -470,6 +473,19 @@ const AddCityInfomation = () => {
     querySnapshot.forEach((doc) => {
       setcityid(doc.id);
       setcity(doc.data().cityName);
+    });
+  };
+
+  const handleGetLocationId = async () => {
+    const ref = `/Gujarat/Cities/Citypage`;
+    const locationImformation = collection(firestore, ref);
+    const q = query(
+      locationImformation,
+      where("location", "==", form.locationName)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setLocationId(doc.id);
     });
   };
 
@@ -686,7 +702,7 @@ const AddCityInfomation = () => {
 
   const handleUploadData = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (image1.ImageUrl !== "" && cityid !== "") {
+    if (image1.ImageUrl !== "" && cityid !== "" && locationId !== "") {
       setloadingEvent2(true);
       const LocationId = uuidv4();
       const ref = `Gujarat/Cities/locationData/${LocationId}`;
@@ -695,6 +711,7 @@ const AddCityInfomation = () => {
       if (!mySnapshot.exists()) {
         await setDoc(citiesImformation, {
           locationName: form.locationName,
+          locationId: locationId,
           locationDataId: LocationId,
           city: city,
           cityId: cityid,
@@ -717,7 +734,7 @@ const AddCityInfomation = () => {
         });
       }
     } else {
-      alert("first upload cover image!!");
+      alert("please fill form perfactly!!");
     }
   };
   return (
@@ -729,9 +746,6 @@ const AddCityInfomation = () => {
         x: 0,
       }}
     >
-      <div className="my-8 text-center tracking-wider text-blue-600 font-bold text-4xl font-suezone">
-        Add Location information
-      </div>
       <form
         className="mt-10 md:px-96 min-[0px]:px-8"
         onSubmit={handleUploadData}
