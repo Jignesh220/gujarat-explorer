@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Box, Stack } from "@mui/joy";
+import { Box, CircularProgress, Stack } from "@mui/joy";
 import Image from "next/image";
 import { Grid } from "@mui/joy";
 import { motion } from "framer-motion";
@@ -13,11 +13,21 @@ import { useSwiper } from "swiper/react";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
 import { EffectCreative } from "swiper";
+import { db } from "@/Firebase/Firebase";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 const images = [
   {
@@ -76,7 +86,51 @@ export default function City() {
   const cityName = useSearch.get("c");
   const swiper = useSwiper();
   const [imageIndex, setimageIndex] = React.useState(0);
-  const [imageCover, setImageCover] = React.useState(images[0]);
+  const [Counter, setCounter] = React.useState(true);
+  const [City, setCity] = React.useState<any[]>([]);
+  const [cityId, setcityId] = React.useState<string | null>("");
+  const [Citypage, setCitypage] = React.useState<any[]>([]);
+  const [ImageArray, setImageArray] = React.useState<any[]>([]);
+
+  useEffect(() => {
+    if (cityName) {
+      getCityData();
+    }
+  }, [cityName]);
+
+  useEffect(() => {
+    if (cityId) {
+      getCityPageData();
+    }
+  }, [cityId]);
+
+  const getCityData = async () => {
+    const ref = `/Gujarat/Cities/Home`;
+    const citiesImformation = collection(db, ref);
+    const q = query(citiesImformation, where("cityName", "==", cityName));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setCity((arr) => [...arr, doc.data()]);
+      setcityId(doc.data().cityId);
+    });
+  };
+  const getCityPageData = async () => {
+    const ref = `/Gujarat/Cities/Citypage`;
+    const citiesImformation = collection(db, ref);
+    const q = query(citiesImformation, where("cityId", "==", cityId));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setCitypage((arr) => [...arr, doc.data()]);
+      setImageArray((arr) => [
+        ...arr,
+        {
+          id: doc.data().locationId,
+          name: doc.data().location,
+          src: doc.data().coverImageUrl,
+        },
+      ]);
+    });
+  };
 
   const NavigationButton = () => {
     const swiper = useSwiper();
@@ -96,12 +150,8 @@ export default function City() {
               swiper.slidePrev();
               if (imageIndex > 0) {
                 setimageIndex(imageIndex - 1);
-                console.log(imageIndex - 1);
-                setImageCover(images[imageIndex - 1]);
               } else {
                 setimageIndex(9);
-                console.log(9);
-                setImageCover(images[9]);
               }
             }}
             sx={{
@@ -119,12 +169,8 @@ export default function City() {
               swiper.slideNext();
               if (imageIndex < 9) {
                 setimageIndex(imageIndex + 1);
-                console.log(imageIndex + 1);
-                setImageCover(images[imageIndex + 1]);
               } else {
                 setimageIndex(0);
-                console.log(0);
-                setImageCover(images[0]);
               }
             }}
             sx={{
@@ -153,12 +199,17 @@ export default function City() {
         }}
         className="absolute min-h-full min-w-full"
       >
-        <Image
-          src={imageCover.src}
-          fill={true}
-          alt="Cover_Image"
-          className="bg-black"
-        />
+        {ImageArray.filter((_, index) => index === imageIndex).map((item) => {
+          return (
+            <Image
+              key={item.id}
+              src={item.src}
+              fill={true}
+              alt="Cover_Image"
+              className="bg-black object-cover"
+            />
+          );
+        })}
       </motion.div>
       <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid xs={6} sm={6} md={6}>
@@ -212,9 +263,16 @@ export default function City() {
                     transform: "translate(-50%,0%)",
                   }}
                 >
-                  <div className="md:text-8xl min-[0px]:text-5xl font-suezone tracking-wider capitalize opacity-50 text-white text-center">
-                    {imageCover.name}
-                  </div>
+                  {ImageArray.filter((_, index) => index === imageIndex).map(
+                    (item) => (
+                      <div
+                        key={item.id}
+                        className="md:text-8xl min-[0px]:text-5xl font-suezone tracking-wider capitalize opacity-50 text-white text-center"
+                      >
+                        {item.name}
+                      </div>
+                    )
+                  )}
                 </div>
               </Grid>
               <Grid
@@ -245,69 +303,73 @@ export default function City() {
                     modules={[Pagination, Navigation]}
                     className="mySwiper text-white"
                   >
-                    {images.map((img) => (
-                      <SwiperSlide key={img.id}>
-                        <motion.div
-                          whileHover={{
-                            scale: 1.03,
-                          }}
-                          initial={{
-                            opacity: 0,
-                          }}
-                          whileInView={{
-                            opacity: 1,
-                          }}
-                          transition={{
-                            duration: 0.8,
-                            ease: "easeIn",
-                          }}
-                          exit={{
-                            opacity:0
-                          }}
-                          className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
-                          // onClick={() => {
-                          //   setImageCover(img);
-                          // }}
-                        >
-                          <Image
-                            src={img.src}
-                            alt="image_1"
-                            fill
-                            className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
-                          />
-                          <div
-                            className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
-                            style={{
-                              background:
-                                "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 60%), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 90%)",
-                            }}
-                          />
-                          <div
-                            className="md:rounded-3xl min-[0px]:rounded-2xl"
-                            style={{
-                              position: "absolute",
-                              bottom: 0,
-                              left: "50%",
-                              transform: "translate(-50%,0%)",
-                              marginBottom: 15,
-                            }}
-                          >
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              sx={{
-                                borderRadius: 8,
-                                textTransform: "none",
+                    {ImageArray.map((img) => {
+                      return (
+                        <SwiperSlide key={img.id}>
+                          <Link href={`/cityitem?i=${img.id}`}>
+                            <motion.div
+                              whileHover={{
+                                scale: 1.03,
                               }}
+                              initial={{
+                                opacity: 0,
+                              }}
+                              whileInView={{
+                                opacity: 1,
+                              }}
+                              transition={{
+                                duration: 0.8,
+                                ease: "easeIn",
+                              }}
+                              exit={{
+                                opacity: 0,
+                              }}
+                              className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
+                              // onClick={() => {
+                              //   setImageCover(img);
+                              // }}
                             >
-                              <div className="font-outfit font-bold tracking-wider">
-                                Explore
+                              <Image
+                                src={img.src}
+                                alt="image_1"
+                                fill
+                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
+                              />
+                              <div
+                                className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
+                                style={{
+                                  background:
+                                    "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 60%), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 90%)",
+                                }}
+                              />
+                              <div
+                                className="md:rounded-3xl min-[0px]:rounded-2xl"
+                                style={{
+                                  position: "absolute",
+                                  bottom: 0,
+                                  left: "50%",
+                                  transform: "translate(-50%,0%)",
+                                  marginBottom: 15,
+                                }}
+                              >
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  sx={{
+                                    borderRadius: 8,
+                                    textTransform: "none",
+                                  }}
+                                >
+                                  <div className="font-outfit font-bold tracking-wider">
+                                    Explore
+                                  </div>
+                                </Button>
                               </div>
-                            </Button>
-                          </div>
-                        </motion.div>
-                      </SwiperSlide>
-                    ))}
+                            </motion.div>
+                          </Link>
+                        </SwiperSlide>
+                      );
+                    })}
                     <NavigationButton />
                   </Swiper>
                 </div>

@@ -37,7 +37,6 @@ export default function Home() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       setLocation((arr) => [...arr, doc.data()]);
-      console.log(doc.data());
     });
   };
   return (
