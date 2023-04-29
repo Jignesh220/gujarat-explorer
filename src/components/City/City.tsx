@@ -29,67 +29,13 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 
-const images = [
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F1.webp?alt=media",
-    id: 1,
-    name: "Bai Harir Ni vav",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F2.webp?alt=media",
-    id: 2,
-    name: "Gandhi ashram",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F3.webp?alt=media",
-    id: 3,
-    name: "Heritage Walk",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F4.webp?alt=media",
-    id: 4,
-    name: "Hutheesing Jain Temple",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F5.webp?alt=media",
-    id: 5,
-    name: "Julta Minara",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F6.webp?alt=media",
-    id: 6,
-    name: "Kankaria Lake",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F7.webp?alt=media",
-    id: 7,
-    name: "Lalbhai Dalpathbhai Museum",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F8.webp?alt=media",
-    id: 8,
-    name: "Nalsarovar Bird Sanctuary",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F9.webp?alt=media",
-    id: 9,
-    name: "Sabarmati Riverfront",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Ahmedabad%2Fcover%2F10.webp?alt=media",
-    id: 10,
-    name: "Swaminarayan Temple",
-  },
-];
 export default function City() {
   const useSearch = useSearchParams();
   const cityName = useSearch.get("c");
-  const swiper = useSwiper();
   const [imageIndex, setimageIndex] = React.useState(0);
-  const [Counter, setCounter] = React.useState(true);
+  const [loading, setloading] = React.useState(true);
   const [City, setCity] = React.useState<any[]>([]);
   const [cityId, setcityId] = React.useState<string | null>("");
-  const [Citypage, setCitypage] = React.useState<any[]>([]);
   const [ImageArray, setImageArray] = React.useState<any[]>([]);
 
   useEffect(() => {
@@ -119,8 +65,8 @@ export default function City() {
     const citiesImformation = collection(db, ref);
     const q = query(citiesImformation, where("cityId", "==", cityId));
     const querySnapshot = await getDocs(q);
+    setloading(false);
     querySnapshot.forEach((doc) => {
-      setCitypage((arr) => [...arr, doc.data()]);
       setImageArray((arr) => [
         ...arr,
         {
@@ -132,9 +78,21 @@ export default function City() {
     });
   };
 
+  if (loading) {
+    return (
+      <div
+        className="min-h-screen min-w-full center-v-h text-9xl  font-suezone"
+        style={{
+          backgroundColor: "#07111D",
+        }}
+      >
+        <CircularProgress variant="soft" size="lg" color="info" thickness={5} />
+      </div>
+    );
+  }
+
   const NavigationButton = () => {
     const swiper = useSwiper();
-
     return (
       <Stack
         direction="row"
@@ -151,7 +109,7 @@ export default function City() {
               if (imageIndex > 0) {
                 setimageIndex(imageIndex - 1);
               } else {
-                setimageIndex(9);
+                setimageIndex(ImageArray.length - 1);
               }
             }}
             sx={{
@@ -188,6 +146,7 @@ export default function City() {
   };
   return (
     <div className="relative min-h-screen">
+      <div className="bg-black min-h-full min-w-full absolute md:hidden min-[0px]:block"></div>
       <motion.div
         initial={{
           opacity: 0,
@@ -197,19 +156,21 @@ export default function City() {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="absolute min-h-full min-w-full"
+        className="absolute min-h-full min-w-full bg-black"
       >
-        {ImageArray.filter((_, index) => index === imageIndex).map((item) => {
-          return (
-            <Image
-              key={item.id}
-              src={item.src}
-              fill={true}
-              alt="Cover_Image"
-              className="bg-black object-cover"
-            />
-          );
-        })}
+        <div className="md:block min-[0px]:hidden">
+          {ImageArray.filter((_, index) => index === imageIndex).map((item) => {
+            return (
+              <Image
+                key={item.id}
+                src={item.src}
+                fill={true}
+                alt="Cover_Image"
+                className="bg-black object-cover"
+              />
+            );
+          })}
+        </div>
       </motion.div>
       <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid xs={6} sm={6} md={6}>
@@ -220,23 +181,19 @@ export default function City() {
             }}
           >
             <div className="center-v-h-absolute min-w-full p-20">
-              <Stack direction="column" gap={2}>
-                <div className="text-5xl font-bold text-white uppercase font-aboreto">
-                  Welcome
-                </div>
-                <div className="text-5xl font-bold text-white uppercase font-aboreto">
-                  To <span className="text-blue-500">{cityName}</span>
-                </div>
-                <div className="text-xl text-slate-300 font-outfit opacity-95 tracking-wide">
-                  Ahmedabad, in western India, is the largest city in the state
-                  of Gujarat. The Sabarmati River runs through its center. On
-                  the western bank is the Gandhi Ashram at Sabarmati, which
-                  displays the spiritual leader&#39;s living quarters and
-                  artifacts. Across the river, the Calico Museum of Textiles,
-                  once a cloth merchant&#39;s mansion, has a significant
-                  collection of antique and modern fabrics.
-                </div>
-              </Stack>
+              {City.map((item) => (
+                <Stack direction="column" gap={2} key={item.cityName}>
+                  <div className="text-5xl font-bold text-white uppercase font-aboreto">
+                    Welcome
+                  </div>
+                  <div className="text-5xl font-bold text-white uppercase font-aboreto">
+                    To <span className="text-blue-500">{item.cityName}</span>
+                  </div>
+                  <div className="text-xl text-slate-300 font-outfit opacity-95 tracking-wide">
+                    {item.about}
+                  </div>
+                </Stack>
+              ))}
             </div>
           </div>
         </Grid>
@@ -247,6 +204,32 @@ export default function City() {
               backgroundColor: "#000000aa",
             }}
           >
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeIn",
+              }}
+              className="absolute min-h-full min-w-full bg-white"
+            >
+              {ImageArray.filter((_, index) => index === imageIndex).map(
+                (item) => {
+                  return (
+                    <Image
+                      key={item.id}
+                      src={item.src}
+                      fill={true}
+                      alt="Cover_Image"
+                      className="bg-black object-cover"
+                    />
+                  );
+                }
+              )}
+            </motion.div>
+            <div className="bg-black opacity-60 absolute min-h-full min-w-full"/>
             <Grid container columns={12}>
               <Grid
                 xs={12}
