@@ -180,16 +180,16 @@ export default function City() {
               backgroundColor: "#000000aa",
             }}
           >
-            <div className="center-v-h-absolute min-w-full p-20">
+            <div className="center-v-h-absolute min-w-full md:p-20 min-[0px]:p-8">
               {City.map((item) => (
                 <Stack direction="column" gap={2} key={item.cityName}>
-                  <div className="text-5xl font-bold text-white uppercase font-aboreto">
+                  <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
                     Welcome
                   </div>
-                  <div className="text-5xl font-bold text-white uppercase font-aboreto">
+                  <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
                     To <span className="text-blue-500">{item.cityName}</span>
                   </div>
-                  <div className="text-xl text-slate-300 font-outfit opacity-95 tracking-wide">
+                  <div className="md:text-xl min-[0px]:text-sm text-slate-300 font-outfit opacity-95 tracking-wide">
                     {item.about}
                   </div>
                 </Stack>
@@ -213,7 +213,7 @@ export default function City() {
                 duration: 0.5,
                 ease: "easeIn",
               }}
-              className="absolute min-h-full min-w-full bg-white"
+              className="absolute min-h-full min-w-full bg-white min-[0px]:block md:hidden"
             >
               {ImageArray.filter((_, index) => index === imageIndex).map(
                 (item) => {
@@ -229,7 +229,7 @@ export default function City() {
                 }
               )}
             </motion.div>
-            <div className="bg-black opacity-60 absolute min-h-full min-w-full"/>
+            <div className="bg-black opacity-60 absolute min-h-full min-w-full min-[0px]:block md:hidden"/>
             <Grid container columns={12}>
               <Grid
                 xs={12}
