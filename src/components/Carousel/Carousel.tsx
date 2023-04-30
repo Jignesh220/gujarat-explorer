@@ -1,5 +1,4 @@
 import React from "react";
-import "@splidejs/splide/css";
 import Image from "next/image";
 import { Toolbar } from "@mui/material";
 import Miya from "../../images/miya.webp";

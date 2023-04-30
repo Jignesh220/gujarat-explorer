@@ -14,7 +14,6 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/joy": "^5.0.0-alpha.75",
     "@mui/lab": "^5.0.0-alpha.127",
-    "@splidejs/react-splide": "^0.7.12",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
