@@ -429,6 +429,73 @@ export default function City() {
                         </SwiperSlide>
                       );
                     })}
+                    {ImageArray.map((img) => {
+                      return (
+                        <SwiperSlide key={img.src}>
+                          <Link href={`/cityitem?i=${img.id}`}>
+                            <motion.div
+                              whileHover={{
+                                scale: 1.03,
+                              }}
+                              initial={{
+                                opacity: 0,
+                              }}
+                              whileInView={{
+                                opacity: 1,
+                              }}
+                              transition={{
+                                duration: 0.8,
+                                ease: "easeIn",
+                              }}
+                              exit={{
+                                opacity: 0,
+                              }}
+                              className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
+                              // onClick={() => {
+                              //   setImageCover(img);
+                              // }}
+                            >
+                              <Image
+                                src={img.src}
+                                alt="image_1"
+                                fill
+                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
+                              />
+                              <div
+                                className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
+                                style={{
+                                  background:
+                                    "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 60%), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 90%)",
+                                }}
+                              />
+                              <div
+                                className="md:rounded-3xl min-[0px]:rounded-2xl"
+                                style={{
+                                  position: "absolute",
+                                  bottom: 0,
+                                  left: "50%",
+                                  transform: "translate(-50%,0%)",
+                                  marginBottom: 15,
+                                }}
+                              >
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  sx={{
+                                    borderRadius: 8,
+                                    textTransform: "none",
+                                  }}
+                                >
+                                  <div className="font-outfit font-bold tracking-wider">
+                                    Explore
+                                  </div>
+                                </Button>
+                              </div>
+                            </motion.div>
+                          </Link>
+                        </SwiperSlide>
+                      );
+                    })}
                     <NavigationButton />
                   </Swiper>
                 </div>

@@ -1,4 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
+
+// import "./styles.css";
+// import '../../styles/tranding.css'
+
+// import required modules
+import { EffectCards } from "swiper";
 import { collection, getDocs } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { db } from "@/Firebase/Firebase";
@@ -7,7 +19,7 @@ import { Grid, Stack } from "@mui/joy";
 import Link from "next/link";
 import { amber } from "@mui/material/colors";
 
-export default function ByCities() {
+export default function Tranding() {
   const [Cities, setCities] = React.useState<any[]>([]);
   const [ArrayIndex, setArrayIndex] = React.useState(4);
   React.useEffect(() => {
@@ -24,7 +36,7 @@ export default function ByCities() {
     });
   };
   return (
-    <div className="min-w-full">
+    <div className="min-w-full mt-16">
       <div className="md:px-32 min-[0px]:px-8">
         <div className="md:pb-6 min-[0px]:pb-5">
           <div
@@ -33,33 +45,18 @@ export default function ByCities() {
               color: "rgb(22,78,99,0.2)",
             }}
           >
-            City
-          </div>
-          <div className="flex justify-end min-w-full">
-            <button
-              onClick={() => {
-                if (ArrayIndex === 4) {
-                  setArrayIndex(Cities.length - 1);
-                }else{
-                  setArrayIndex(4)
-                }
-                
-              }}
-              className="text-white font-bold font-outfit tracking-wider bg-gradient-to-br from-blue-200 via-blue-400 to-blue-600 py-2 px-6 rounded-full"
-            >
-              {
-                ArrayIndex === 4 ? 'Show More' : 'Show Less'
-              }
-            </button>
+            Tranding
           </div>
         </div>
-        <Grid
-          container
-          columns={{ xs: 12, sm: 12, md: 12 }}
-          spacing={{ xs: 2, md: 3 }}
+        <Swiper
+          effect={"cards"}
+          grabCursor={true}
+          modules={[EffectCards]}
+          loop={true}
+          className="mySwiper w-64 h-96"
         >
-          {Cities.slice(0, ArrayIndex).map((city) => (
-            <Grid xs={6} lg={3} key={city.cityCode}>
+          {Cities.map((city) => (
+            <SwiperSlide className="flex justify-center items-center">
               <Link href={`/city?c=${city.cityName}`}>
                 <motion.div
                   whileHover={{
@@ -71,38 +68,17 @@ export default function ByCities() {
                   }}
                   className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
                 >
-                  <div
-                    className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-xl"
-                    style={{
-                      backdropFilter: "blur(1px)",
-                      backgroundColor: "#0000007a",
-                    }}
-                  />
-                  <motion.div
-                    whileHover={{
-                      opacity: 1,
-                      color: amber[500],
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      ease: "easeIn",
-                    }}
-                    className="lg:text-5xl md:text-4xl min-[0px]:text-xl opacity-60 font-suezone min-h-full min-w-full absolute rounded-3xl center-v-h text-white font-bold tracking-wider"
-                  >
-                    {city.cityName}
-                  </motion.div>
                   <Image
                     src={city.coverImageUrl}
                     alt={`${city.cityName}_cover`}
-                    width={1000}
-                    height={1000}
+                    fill={true}
                     className="md:rounded-3xl min-[0px]:rounded-xl"
                   />
                 </motion.div>
               </Link>
-            </Grid>
+            </SwiperSlide>
           ))}
-        </Grid>
+        </Swiper>
       </div>
     </div>
   );
