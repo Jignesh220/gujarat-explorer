@@ -56,7 +56,7 @@ export default function Tranding() {
           className="mySwiper w-64 h-96"
         >
           {Cities.map((city) => (
-            <SwiperSlide className="flex justify-center items-center">
+            <SwiperSlide className="flex justify-center items-center" key={city.cityName````}>
               <Link href={`/city?c=${city.cityName}`}>
                 <motion.div
                   whileHover={{
