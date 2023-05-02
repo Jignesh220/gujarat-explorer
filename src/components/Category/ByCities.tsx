@@ -45,7 +45,7 @@ export default function ByCities() {
                 }
                 
               }}
-              className="text-white font-bold font-outfit tracking-wider bg-gradient-to-br from-blue-200 via-blue-400 to-blue-600 py-2 px-6 rounded-full"
+              className="text-white md:text-base min-[0px]:text-xs font-bold font-outfit tracking-wider bg-gradient-to-br from-blue-200 via-blue-400 to-blue-600 py-2 md:px-6 min-[0px]:px-3 rounded-full"
             >
               {
                 ArrayIndex === 4 ? 'Show More' : 'Show Less'
