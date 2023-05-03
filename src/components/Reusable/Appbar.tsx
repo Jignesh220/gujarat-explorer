@@ -97,7 +97,7 @@ function Appbar() {
                       borderRadius: 999,
                     }}
                   >
-                    <SearchRoundedIcon color="info"/>
+                    <SearchRoundedIcon color="info" />
                   </IconButton>
                 </Stack>
               </form>
@@ -338,91 +338,23 @@ const CitiesData = [
     url: "cityitem?i=d38fbc84-cf17-4ff9-9510-b7c8e9a3abab",
     name: "Rani Ki Vav",
   },
-  {
-    cityName: "Surat",
-    url: "city?c=0722a000-7b37-49bd-8221-ce004a532cdf",
-    name: "Surat",
-  },
-  {
-    cityName: "Ahmedabad",
-    url: "city?c=0ffcb7f9-1a0d-437a-b853-0d91be22ea2a",
-    name: "Ahmedabad",
-  },
-  {
-    cityName: "Porbandar",
-    url: "city?c=101232a9-1d75-4fb4-9407-a8cffabd8344",
-    name: "Porbandar",
-  },
-  {
-    cityName: "Dang ",
-    url: "city?c=1bdf8972-1a81-49aa-b2c6-8837b96fbf88",
-    name: "Dang ",
-  },
-  {
-    cityName: "Patan",
-    url: "city?c=1de7787f-11b7-4a3c-a2f0-539adc4ea319",
-    name: "Patan",
-  },
-  {
-    cityName: "Rajkot",
-    url: "city?c=23946a61-0ad3-409a-bb35-2d0c05cec9ee",
-    name: "Rajkot",
-  },
-  {
-    cityName: "Narmada",
-    url: "city?c=2b023b04-5e4b-440f-8606-8198879d1d4c",
-    name: "Narmada",
-  },
-  {
-    cityName: "Junagadh",
-    url: "city?c=39a53ed7-fd52-497a-a576-80db25383785",
-    name: "Junagadh",
-  },
-  {
-    cityName: "Kheda",
-    url: "city?c=3b881b54-05b9-49de-8d58-93a838dc58e1",
-    name: "Kheda",
-  },
-  {
-    cityName: "Sabarkantha",
-    url: "city?c=5a0e2855-03b3-4b97-9d56-848ba5cd763b",
-    name: "Sabarkantha",
-  },
-  {
-    cityName: "Panchmahal",
-    url: "city?c=6180f84b-1c2d-4a8c-98dd-369f1109ddbf",
-    name: "Panchmahal",
-  },
-  {
-    cityName: "Vadodara",
-    url: "city?c=7964fc6a-c814-4a10-a272-67c01eb47d31",
-    name: "Vadodara",
-  },
-  {
-    cityName: "Bharuch",
-    url: "city?c=94e9d594-2511-4643-81bb-602040c2f259",
-    name: "Bharuch",
-  },
-  {
-    cityName: "Bhavnagar",
-    url: "city?c=d579b6a0-6a15-4cf6-a2ce-a860497769f4",
-    name: "Bhavnagar",
-  },
-  {
-    cityName: "Gandhinagar",
-    url: "city?c=eb605b42-3240-4d84-9e4b-8c7015a03ca7",
-    name: "Gandhinagar",
-  },
-  {
-    cityName: "Dwarka",
-    url: "city?c=f683a532-a569-4be3-a993-7d2ebbb00ffc",
-    name: "Dwarka",
-  },
-  {
-    cityName: "Kutch",
-    url: "city?c=ff37094f-e8d5-4759-86c7-8508afd48baf",
-    name: "Kutch",
-  },
+  { cityName: "Surat", url: "city?c=Surat", name: "Surat" },
+  { cityName: "Ahmedabad", url: "city?c=Ahmedabad", name: "Ahmedabad" },
+  { cityName: "Porbandar", url: "city?c=Porbandar", name: "Porbandar" },
+  { cityName: "Dang ", url: "city?c=Dang ", name: "Dang " },
+  { cityName: "Patan", url: "city?c=Patan", name: "Patan" },
+  { cityName: "Rajkot", url: "city?c=Rajkot", name: "Rajkot" },
+  { cityName: "Narmada", url: "city?c=Narmada", name: "Narmada" },
+  { cityName: "Junagadh", url: "city?c=Junagadh", name: "Junagadh" },
+  { cityName: "Kheda", url: "city?c=Kheda", name: "Kheda" },
+  { cityName: "Sabarkantha", url: "city?c=Sabarkantha", name: "Sabarkantha" },
+  { cityName: "Panchmahal", url: "city?c=Panchmahal", name: "Panchmahal" },
+  { cityName: "Vadodara", url: "city?c=Vadodara", name: "Vadodara" },
+  { cityName: "Bharuch", url: "city?c=Bharuch", name: "Bharuch" },
+  { cityName: "Bhavnagar", url: "city?c=Bhavnagar", name: "Bhavnagar" },
+  { cityName: "Gandhinagar", url: "city?c=Gandhinagar", name: "Gandhinagar" },
+  { cityName: "Dwarka", url: "city?c=Dwarka", name: "Dwarka" },
+  { cityName: "Kutch", url: "city?c=Kutch", name: "Kutch" },
 ];
 
 export default Appbar;

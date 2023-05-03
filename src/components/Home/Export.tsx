@@ -36,7 +36,7 @@ export default function Export() {
         <div key={item.locationId}>
           {`{
                         cityName: "${item.cityName}",
-                        url: "city?c=${item.cityId}",
+                        url: "city?c=${item.cityName}",
                         name: "${item.cityName}",
                     },
                     `}
