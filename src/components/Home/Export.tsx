@@ -21,7 +21,7 @@ export default function Export() {
   }, [db]);
 
   const getUserData = async () => {
-    const ref = `/Gujarat/Cities/Home`;
+    const ref = `/Gujarat/Cities/locationData`;
     const userInformation = collection(db, ref);
     const mySnapshot = await getDocs(userInformation);
     mySnapshot.forEach((doc) => {
@@ -35,9 +35,9 @@ export default function Export() {
       {Cities.map((item) => (
         <div key={item.locationId}>
           {`{
-                        cityName: "${item.cityName}",
-                        url: "city?c=${item.cityName}",
-                        name: "${item.cityName}",
+                        cityName: "${item.city}",
+                        url: "cityitem?i=${item.locationId}",
+                        name: "${item.locationName}",
                     },
                     `}
         </div>
