@@ -129,11 +129,11 @@ export default function City() {
               swiper.slideNext();
               if (imageIndex < ImageArray.length - 1) {
                 console.log(imageIndex + 1);
-                
+
                 setimageIndex(imageIndex + 1);
               } else {
                 console.log(0);
-                
+
                 setimageIndex(0);
               }
             }}
@@ -170,7 +170,10 @@ export default function City() {
               <Image
                 key={item.id}
                 src={item.src}
-                fill={true}
+                fill
+                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
                 alt="Cover_Image"
                 className="bg-black object-cover"
               />
@@ -227,7 +230,10 @@ export default function City() {
                     <Image
                       key={item.id}
                       src={item.src}
-                      fill={true}
+                      fill
+                      sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
                       alt="Cover_Image"
                       className="bg-black object-cover"
                     />
@@ -235,7 +241,7 @@ export default function City() {
                 }
               )}
             </motion.div>
-            <div className="bg-black opacity-60 absolute min-h-full min-w-full min-[0px]:block md:hidden"/>
+            <div className="bg-black opacity-60 absolute min-h-full min-w-full min-[0px]:block md:hidden" />
             <Grid container columns={12}>
               <Grid
                 xs={12}
@@ -325,6 +331,9 @@ export default function City() {
                                 src={img.src}
                                 alt="image_1"
                                 fill
+                                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
@@ -392,6 +401,9 @@ export default function City() {
                                 src={img.src}
                                 alt="image_1"
                                 fill
+                                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
@@ -459,6 +471,9 @@ export default function City() {
                                 src={img.src}
                                 alt="image_1"
                                 fill
+                                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div

@@ -126,7 +126,7 @@ export default function Tranding() {
                     {Cities.filter((_, index) => index == textIndex).map(
                       (city) => (
                         <div
-                        key={city.cityName}
+                          key={city.cityName}
                           className="text-8xl font-suezone tracking-wider font-bold"
                           style={{
                             color: color,
@@ -182,6 +182,7 @@ export default function Tranding() {
                             src={city.coverImageUrl}
                             alt={`${city.cityName}_cover`}
                             fill={true}
+                            sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
                             className="rounded-3xl object-cover"
                           />
                           <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
