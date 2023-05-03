@@ -26,9 +26,11 @@ export default function CityPage() {
   return (
     <div>
       <Head>
-        <title>Tourism App | {cityName ? cityName : ""}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="../images/Logo/logo.png" />
+        <title>Tourism App</title>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1F487E" />
+        <link rel="apple-touch-icon" href="/icon-192-maskable.png" />
+        <meta name="apple-mobile-web-app-status-bar" content="#1F487E" />
       </Head>
       <City />
     </div>
