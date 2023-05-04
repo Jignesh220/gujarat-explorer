@@ -51,31 +51,41 @@ export default function City() {
   }, [cityId]);
 
   const getCityData = async () => {
-    const ref = `/Gujarat/Cities/Home`;
-    const citiesImformation = collection(db, ref);
-    const q = query(citiesImformation, where("cityName", "==", cityName));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      setCity((arr) => [...arr, doc.data()]);
-      setcityId(doc.data().cityId);
-    });
+    while (City.length > 0) {
+      City.pop();
+    }
+    if (City.length === 0) {
+      const ref = `/Gujarat/Cities/Home`;
+      const citiesImformation = collection(db, ref);
+      const q = query(citiesImformation, where("cityName", "==", cityName));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setCity((arr) => [...arr, doc.data()]);
+        setcityId(doc.data().cityId);
+      });
+    }
   };
   const getCityPageData = async () => {
-    const ref = `/Gujarat/Cities/Citypage`;
-    const citiesImformation = collection(db, ref);
-    const q = query(citiesImformation, where("cityId", "==", cityId));
-    const querySnapshot = await getDocs(q);
-    setloading(false);
-    querySnapshot.forEach((doc) => {
-      setImageArray((arr) => [
-        ...arr,
-        {
-          id: doc.data().locationId,
-          name: doc.data().location,
-          src: doc.data().coverImageUrl,
-        },
-      ]);
-    });
+    while (ImageArray.length > 0) {
+      ImageArray.pop();
+    }
+    if (ImageArray.length === 0) {
+      const ref = `/Gujarat/Cities/Citypage`;
+      const citiesImformation = collection(db, ref);
+      const q = query(citiesImformation, where("cityId", "==", cityId));
+      const querySnapshot = await getDocs(q);
+      setloading(false);
+      querySnapshot.forEach((doc) => {
+        setImageArray((arr) => [
+          ...arr,
+          {
+            id: doc.data().locationId,
+            name: doc.data().location,
+            src: doc.data().coverImageUrl,
+          },
+        ]);
+      });
+    }
   };
 
   if (loading) {
@@ -262,7 +272,7 @@ export default function City() {
                     (item) => (
                       <div
                         key={item.id}
-                        className="md:text-8xl min-[0px]:text-5xl font-suezone tracking-wider capitalize opacity-50 text-white text-center"
+                        className="md:text-8xl min-w-full min-[0px]:text-5xl font-suezone tracking-wider capitalize opacity-50 text-white text-center"
                       >
                         {item.name}
                       </div>

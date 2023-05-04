@@ -14,6 +14,7 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import MobileDrawer from "./MobileDrawer";
 
 function Appbar() {
   const [Search, setSearch] = React.useState<string>("");
@@ -60,11 +61,13 @@ function Appbar() {
               color: "#000",
             }}
           >
-            <Image src={Logo} alt="Logo" width={30} />
+            <Link href="/">
+              <Image src={Logo} alt="Logo" width={30} />
+            </Link>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none",mr:1, } }}>
-            <IconButton
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none", mr: 1 } }}>
+            {/* <IconButton
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -72,14 +75,19 @@ function Appbar() {
                 color: "#000",
               }}
             >
-              <MenuIcon sx={{
-                color: '#fff'
-              }}/>
-            </IconButton>
+              <MenuIcon
+                sx={{
+                  color: "#fff",
+                }}
+              />
+            </IconButton> */}
+            <MobileDrawer />
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
             <Stack direction="row" gap={1}>
-              <Image src={Logo} alt="Logo" width={40} height={40} />
+              <Link href="/" className="my-auto">
+                <Image src={Logo} alt="Logo" width={30} height={30} />
+              </Link>
               <form onSubmit={handleSubmit}>
                 <Stack direction="row" gap={1}>
                   <Autocomplete
@@ -123,7 +131,10 @@ function Appbar() {
               >
                 Gallery
               </Link>
-              <Link href="/contact-us" className="cursor-pointer text-white font-athiti font-semibold tracking-wide">
+              <Link
+                href="/contact-us"
+                className="cursor-pointer text-white font-athiti font-semibold tracking-wide"
+              >
                 Contact Us
               </Link>
               <form onSubmit={handleSubmit}>

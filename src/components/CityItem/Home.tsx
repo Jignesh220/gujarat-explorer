@@ -31,13 +31,18 @@ export default function Home() {
   }, [useSearch.get("i")]);
 
   const getLocationData = async () => {
-    const ref = `/Gujarat/Cities/locationData`;
-    const citiesImformation = collection(db, ref);
-    const q = query(citiesImformation, where("locationId", "==", locationId));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      setLocation((arr) => [...arr, doc.data()]);
-    });
+    while (Location.length > 0) {
+      Location.pop();
+    }
+    if (Location.length === 0) {
+      const ref = `/Gujarat/Cities/locationData`;
+      const citiesImformation = collection(db, ref);
+      const q = query(citiesImformation, where("locationId", "==", locationId));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setLocation((arr) => [...arr, doc.data()]);
+      });
+    }
   };
   return (
     <div>

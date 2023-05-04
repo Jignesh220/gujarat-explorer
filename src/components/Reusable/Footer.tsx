@@ -5,8 +5,10 @@ import Logo from "../../images/Logo/logo.png";
 
 export default function Footer() {
   return (
-    <footer aria-label="Site Footer" className="bg-blue-100 mt-60">
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <footer aria-label="Site Footer" className="mt-60" style={{
+      backgroundColor: '#011D3E'
+    }}>
+      <div className="mx-auto max-w-5xl px-4 pt-16 pb-5 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           {/* <svg
             id="Layer_1"
@@ -154,14 +156,14 @@ export default function Footer() {
             <center>
               <Image src={Logo} width={45} alt="Main_Logo" />
             </center>
-            
-            <div className="font-outfit font-bold my-auto text-xl tracking-wide text-blue-700">
+
+            <div className="font-outfit font-bold my-auto text-xl tracking-wide text-blue-300">
               Gujarat Explorer
             </div>
           </div>
         </div>
 
-        <p className="mx-auto mt-6 text-center leading-relaxed font-outfit font-bold tracking-wider text-lg text-gray-500">
+        <p className="mx-auto mt-6 text-center leading-relaxed font-outfit tracking-wider text-lg text-white">
           Experience the vibrant festivals, traditional handicrafts, and
           intricate architecture of Gujarat, while indulging in its diverse and
           flavorful cuisine, all set against the backdrop of its scenic beaches
@@ -174,7 +176,7 @@ export default function Footer() {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className="text-blue-300 transition hover:text-blue-300/75"
             >
               <span className="sr-only">Facebook</span>
               <svg
@@ -197,7 +199,7 @@ export default function Footer() {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className="text-pink-700 transition hover:text-pink-700/75"
             >
               <span className="sr-only">Instagram</span>
               <svg
@@ -220,7 +222,7 @@ export default function Footer() {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className="text-blue-400 transition hover:text-blue-400/75"
             >
               <span className="sr-only">Twitter</span>
               <svg
@@ -239,7 +241,7 @@ export default function Footer() {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className="text-white transition hover:text-white/75"
             >
               <span className="sr-only">GitHub</span>
               <svg
@@ -261,8 +263,24 @@ export default function Footer() {
           <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
+                className="text-white font-outfit tracking-wide transition hover:text-white/75"
+                href="/#ByCities"
+              >
+                Category
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-white font-outfit tracking-wide transition hover:text-white/75"
+                href="/gallery"
+              >
+                Gallery
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-white font-outfit tracking-wide transition hover:text-white/75"
+                href="/about-us"
               >
                 About
               </Link>
@@ -270,49 +288,22 @@ export default function Footer() {
 
             <li>
               <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
+                className="text-white font-outfit tracking-wide transition hover:text-white/75"
+                href="/contact-us"
               >
-                Careers
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
-              >
-                History
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
-              >
-                Services
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
-              >
-                Projects
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
-              >
-                Blog
+                Contact Us
               </Link>
             </li>
           </ul>
+        </nav>
+        <nav aria-label="Footer Nav copyright" className="min-w-full text-center">
+          <div className="text-white text-base mt-12 font-outfit tracking-wide">
+            Copyright &copy;2023{" "}
+            <span className="text-blue-300">
+              {"  "}
+              <Link href="/">Gujarat Explorer</Link>
+            </span>
+          </div>
         </nav>
       </div>
     </footer>

@@ -1,16 +1,16 @@
 import React from "react";
 import Appbar from "@/components/Reusable/Appbar";
-import ContactUs from "@/components/ContactUs/ContactUs";
 import { Toolbar } from "@mui/material";
 import Footer from "@/components/Reusable/Footer";
+import AboutUs from "@/components/AboutUs/AboutUs";
 
-export default function contactUs() {
+export default function about() {
   return (
     <div>
       <Appbar />
       <Toolbar />
-      <ContactUs />
-      <Footer/>
+      <AboutUs />
+      <Footer />
     </div>
   );
 }

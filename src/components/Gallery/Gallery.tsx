@@ -106,7 +106,6 @@ export default function Gallery() {
           spacing={2}
           justifyContent="center"
           alignItems="center"
-          sx={{}}
         >
           {ImageUrl.map((item) => (
             <Grid xs={12} sm={6} md={4} lg={3} key={item.title}>
@@ -125,7 +124,7 @@ export default function Gallery() {
                   className="min-h-full min-w-full relative group"
                 >
                   <div
-                    className="hidden group-hover:block min-h-full min-w-full absolute rounded-3xl"
+                    className="md:hidden min-[0px]:block group-hover:block min-h-full min-w-full absolute rounded-3xl"
                     style={{
                       background:
                         "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0) 300px)",
@@ -138,7 +137,7 @@ export default function Gallery() {
                       left: "50%",
                       transform: "translate(-50%,-50%)",
                     }}
-                    className="hidden group-hover:block"
+                    className="md:hidden min-[0px]:block group-hover:block"
                   >
                     <motion.div
                       initial={{
@@ -151,7 +150,7 @@ export default function Gallery() {
                         duration: 0.8,
                         ease: "easeInOut",
                       }}
-                      className="text-white font-outfit font-bold tracking-wide text-xl"
+                      className="text-white font-outfit font-bold md:tracking-wide min-[0px]:tracking-wider md:text-xl min-[0px]:text-sm"
                     >
                       {item.lName}
                     </motion.div>

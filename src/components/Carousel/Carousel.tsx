@@ -24,6 +24,7 @@ import NavigationButton from "./NavigationButton";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 export default function Carousel() {
   const [ImageView1, setImageView1] = React.useState(false);
@@ -49,7 +50,7 @@ export default function Carousel() {
           autoplay={true}
         >
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=36ab0696-db20-4cd0-bcda-871f977f02c8" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 onViewportEnter={() => {
@@ -109,10 +110,10 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={SasanGir} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=ac401fd1-d513-4ae2-a228-2a241aa6b1f5" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 initial={{
@@ -170,71 +171,10 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={Jambughoda} alt="Image 2" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView3(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView3(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView3
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView3
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">
-                    Modhera Sun Temple
-                  </div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Historical landmark in Modhera, Gujarat
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Modhera} alt="Image 1" className="rounded-3xl" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=3e8f4dcc-b715-4acd-a1f0-ab75968e8c07" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 onViewportEnter={() => {
@@ -290,10 +230,10 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={Pavagadh} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=d38fbc84-cf17-4ff9-9510-b7c8e9a3abab" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group "
                 onViewportEnter={() => {
@@ -349,10 +289,10 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={RaniNiVav} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=341011c2-67d3-496e-bbec-b7a6613c626c" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 onViewportEnter={() => {
@@ -405,10 +345,10 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={WhiteRan} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=aab1f176-ba41-4913-862d-8ea273314274" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 onViewportEnter={() => {
@@ -464,7 +404,7 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={Saputara} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
             <div className="min-h-full min-w-full relative">
@@ -526,7 +466,7 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
+            <Link href="/cityitem?i=28387428-18e7-4dbb-a960-263eea205d0a" className="min-h-full min-w-full relative">
               <motion.div
                 className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
                 onViewportEnter={() => {
@@ -584,7 +524,7 @@ export default function Carousel() {
                 </motion.div>
               </motion.div>
               <Image src={Akashardham} alt="Image 1" className="rounded-3xl" />
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
             <div className="min-h-full min-w-full relative">
