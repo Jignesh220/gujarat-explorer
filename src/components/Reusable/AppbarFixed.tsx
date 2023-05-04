@@ -2,11 +2,11 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Autocomplete, Stack, IconButton } from "@mui/joy";
+import { Autocomplete, Stack } from "@mui/joy";
 import { motion } from "framer-motion";
 import Logo from "../../images/Logo/logo.png";
 import Image from "next/image";
@@ -105,7 +105,6 @@ function AppbarFixed() {
                     }}
                   />
                   <IconButton
-                    variant="solid"
                     type="submit"
                     sx={{
                       borderRadius: 999,
@@ -165,7 +164,6 @@ function AppbarFixed() {
                     }}
                   />
                   <IconButton
-                    variant="solid"
                     type="submit"
                     sx={{
                       borderRadius: 999,

@@ -2,11 +2,11 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Autocomplete, Stack, IconButton } from "@mui/joy";
+import { Autocomplete, Stack } from "@mui/joy";
 import { motion } from "framer-motion";
 import Logo from "../../images/Logo/logo.png";
 import Image from "next/image";
@@ -63,7 +63,7 @@ function Appbar() {
             <Image src={Logo} alt="Logo" width={30} />
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none",mr:1, } }}>
             <IconButton
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -72,7 +72,9 @@ function Appbar() {
                 color: "#000",
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{
+                color: '#fff'
+              }}/>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
@@ -92,7 +94,6 @@ function Appbar() {
                     sx={{ width: 250, borderRadius: 3000, paddingX: 2 }}
                   />
                   <IconButton
-                    variant="solid"
                     type="submit"
                     sx={{
                       borderRadius: 999,
@@ -144,7 +145,6 @@ function Appbar() {
                     }}
                   />
                   <IconButton
-                    variant="solid"
                     type="submit"
                     sx={{
                       borderRadius: 999,
