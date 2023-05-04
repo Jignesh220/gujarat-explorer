@@ -15,7 +15,7 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-function Appbar() {
+function AppbarFixed() {
   const [Search, setSearch] = React.useState<string>("");
   const router = useRouter();
   const handleSubmit = (e: any) => {
@@ -43,7 +43,7 @@ function Appbar() {
           // background:
           //   "linear-gradient(to right,#ffffff2a,#ffffff2a ,#002BFF8a )",
           backdropFilter: "blur(3px)",
-          backgroundColor: "#011D3E",
+          backgroundColor: "transparent",
           boxShadow: 0,
         }}
       >
@@ -72,7 +72,11 @@ function Appbar() {
                 color: "#000",
               }}
             >
-              <MenuIcon />
+              <MenuIcon
+                sx={{
+                  color: "#fff",
+                }}
+              />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
@@ -89,7 +93,16 @@ function Appbar() {
                     options={CitiesData}
                     getOptionLabel={(option) => option.name}
                     groupBy={(option) => option.cityName}
-                    sx={{ width: 250, borderRadius: 3000, paddingX: 2 }}
+                    sx={{
+                      width: 250,
+                      borderRadius: 3000,
+                      paddingX: 2,
+                      backgroundColor: "#ffffff2a",
+                      backdropFilter: "blur(5px)",
+                      color: "#fff",
+                      outline: "none",
+                      border: "none",
+                    }}
                   />
                   <IconButton
                     variant="solid"
@@ -112,17 +125,20 @@ function Appbar() {
             <Stack direction="row" gap={2} alignItems="center">
               <Link
                 href={"/#ByCities"}
-                className="cursor-pointer text-white font-athiti font-semibold tracking-wide"
+                className="cursor-pointer text-blue-300 font-athiti font-semibold tracking-wide"
               >
                 Category
               </Link>
               <Link
                 href="/gallery"
-                className="cursor-pointer text-white font-athiti font-semibold tracking-wide"
+                className="cursor-pointer text-blue-300 font-athiti font-semibold tracking-wide"
               >
                 Gallery
               </Link>
-              <Link href="/contact-us" className="cursor-pointer text-white font-athiti font-semibold tracking-wide">
+              <Link
+                href="/contact-us"
+                className="cursor-pointer text-blue-300 font-athiti font-semibold tracking-wide"
+              >
                 Contact Us
               </Link>
               <form onSubmit={handleSubmit}>
@@ -141,6 +157,11 @@ function Appbar() {
                       width: 300,
                       borderRadius: 3000,
                       paddingX: 2,
+                      backgroundColor: "#ffffff2a",
+                      backdropFilter: "blur(5px)",
+                      color: "#fff",
+                      outline: "none",
+                      border: "none",
                     }}
                   />
                   <IconButton
@@ -592,4 +613,4 @@ const CitiesData = [
   { cityName: "Kutch", url: "city?c=Kutch", name: "Kutch" },
 ];
 
-export default Appbar;
+export default AppbarFixed;

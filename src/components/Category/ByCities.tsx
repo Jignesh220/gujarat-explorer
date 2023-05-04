@@ -27,7 +27,7 @@ export default function ByCities() {
     });
   };
   return (
-    <div className="min-w-full">
+    <div className="min-w-full" id="ByCities">
       {Loaded && (
         <div className="md:px-32 min-[0px]:px-8">
           <div className="md:pb-6 min-[0px]:pb-5">

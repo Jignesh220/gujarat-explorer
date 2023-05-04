@@ -4,25 +4,13 @@ import City from "@/components/City/City";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/joy";
+import AppbarFixed from "@/components/Reusable/AppbarFixed";
+import FooterFixed from "@/components/Reusable/FooterFixed";
 
 export default function CityPage() {
   const useSearch = useSearchParams();
   const cityName = useSearch.get("c");
   const router = useRouter();
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     if (!useSearch.get("c")) {
-  //       router.push("/");
-  //     }
-  //   }, 8000);
-  // }, [useSearch.get("c")]);
-  // if (useSearch.get("i")) {
-  //   return (
-  //     <div className="min-h-screen min-w-full center-v-h text-9xl  font-suezone">
-  //       <CircularProgress variant="soft" size="lg" color="info" thickness={5} />
-  //     </div>
-  //   );
-  // }
   return (
     <div>
       <Head>
@@ -32,7 +20,9 @@ export default function CityPage() {
         <link rel="apple-touch-icon" href="/icon-192-maskable.png" />
         <meta name="apple-mobile-web-app-status-bar" content="#1F487E" />
       </Head>
+      <AppbarFixed />
       <City />
+      <FooterFixed/>
     </div>
   );
 }
