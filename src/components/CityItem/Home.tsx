@@ -68,6 +68,10 @@ export default function Home() {
                 opacity: 1,
                 x: 0,
               }}
+              transition={{
+                duration: 1,
+                ease: "easeInOut",
+              }}
               className="min-h-full min-w-full rounded-3xl"
             >
               <div className="center-v-h-absolute min-w-full">
@@ -83,58 +87,160 @@ export default function Home() {
                       justifyContent="center"
                     >
                       <Grid xs={6}>
-                        <Image
-                          src={item.image1}
-                          alt="image_1"
-                          width={700}
-                          height={500}
-                          className="rounded-2xl "
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image1}
+                            alt="image_1"
+                            width={700}
+                            height={500}
+                            className="rounded-2xl "
+                          />
+                        </motion.div>
                       </Grid>
                       <Grid xs={6}>
-                        <Image
-                          src={item.image2}
-                          alt="image_2"
-                          width={700}
-                          height={500}
-                          className="rounded-2xl "
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image2}
+                            alt="image_2"
+                            width={700}
+                            height={500}
+                            className="rounded-2xl "
+                          />
+                        </motion.div>
                       </Grid>
                       <Grid xs={12}>
-                        <Image
-                          src={item.image3}
-                          alt="image_3"
-                          width={700}
-                          height={500}
-                          className="rounded-2xl "
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image3}
+                            alt="image_3"
+                            width={700}
+                            height={500}
+                            className="rounded-2xl "
+                          />
+                        </motion.div>
                       </Grid>
                       <Grid xs={4}>
-                        <Image
-                          src={item.image4}
-                          width={700}
-                          height={500}
-                          className="rounded-2xl "
-                          alt="image_4"
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image4}
+                            width={700}
+                            height={500}
+                            className="rounded-2xl "
+                            alt="image_4"
+                          />
+                        </motion.div>
                       </Grid>
                       <Grid xs={4}>
-                        <Image
-                          src={item.image5}
-                          alt="image_5"
-                          width={700}
-                          height={500}
-                          className="rounded-2xl "
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image5}
+                            alt="image_5"
+                            width={700}
+                            height={500}
+                            className="rounded-2xl "
+                          />
+                        </motion.div>
                       </Grid>
                       <Grid xs={4}>
-                        <Image
-                          src={item.image6}
-                          alt="image_6"
-                          width={700}
-                          height={500}
-                          className="rounded-2xl  "
-                        />
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 1,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Image
+                            src={item.image6}
+                            alt="image_6"
+                            width={700}
+                            height={500}
+                            className="rounded-2xl  "
+                          />
+                        </motion.div>
                       </Grid>
                     </Grid>
                   </div>
@@ -162,6 +268,10 @@ export default function Home() {
               whileInView={{
                 opacity: 1,
                 x: 0,
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeInOut",
               }}
               className="min-h-full min-w-full bg-gradient-to-br from-slate-800 from-10% via-slate-900 to-black to-95% shadow-2xl shadow-slate-200 rounded-3xl py-16 md:px-14 min-[0px]:px-5 text-white"
             >

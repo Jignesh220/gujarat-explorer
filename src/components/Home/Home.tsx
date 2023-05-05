@@ -10,6 +10,7 @@ export default function Home() {
       <Carousel/>
       <ByCities/>
       <Tranding/>
+      <GalleryHome/>
     </div>
   )
 }

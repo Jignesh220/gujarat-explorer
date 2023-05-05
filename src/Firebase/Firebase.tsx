@@ -6,13 +6,13 @@ import { initializeApp } from "firebase/app";
 // import { getStorage } from "firebase/storage";
 
 const config = {
-  apiKey: "AIzaSyCCAc9au5NRcQdA-cgJxPPwS9eLXzFPmpo",
-  authDomain: "gujarat-explorer.firebaseapp.com",
-  projectId: "gujarat-explorer",
-  storageBucket: "gujarat-explorer.appspot.com",
-  messagingSenderId: "439787021786",
-  appId: "1:439787021786:web:a454038836432043da4ce3",
-  measurementId: "G-X5YR379EKS",
+  apiKey: process.env.NEXT_PUBLIC_apiKey,
+  authDomain: process.env.NEXT_PUBLIC_authDomain,
+  projectId: process.env.NEXT_PUBLIC_projectId,
+  storageBucket: process.env.NEXT_PUBLIC_storageBucket,
+  messagingSenderId: process.env.NEXT_PUBLIC_messagingSenderId,
+  appId: process.env.NEXT_PUBLIC_appId,
+  measurementId: process.env.NEXT_PUBLIC_measurementId,
 };
 
 // firebase.initializeApp(config);

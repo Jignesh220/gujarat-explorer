@@ -23,81 +23,91 @@ export default function Gallery() {
   const firestore = getFirestore(app);
 
   React.useEffect(() => {
-    getUserData().then(() => {
-      setLoading(false);
-    });
+    // getUserData().then(() => {
+    //   setLoading(false);
+    // });
+    getGalleryData();
   }, [db]);
 
-  const getUserData = async () => {
-    const ref = `/Gujarat/Cities/locationData`;
-    const imageList = collection(db, ref);
-    const mySnapshot = await getDocs(imageList);
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image1,
-          title: doc.data().locationName + "_1",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image2,
-          title: doc.data().locationName + "_2",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image3,
-          title: doc.data().locationName + "_3",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image4,
-          title: doc.data().locationName + "_4",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image5,
-          title: doc.data().locationName + "_5",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image6,
-          title: doc.data().locationName + "_6",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
+  // const getUserData = async () => {
+  //   const ref = `/Gujarat/Cities/locationData`;
+  //   const imageList = collection(db, ref);
+  //   const mySnapshot = await getDocs(imageList);
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image1,
+  //         title: doc.data().locationName + "_1",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image2,
+  //         title: doc.data().locationName + "_2",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image3,
+  //         title: doc.data().locationName + "_3",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image4,
+  //         title: doc.data().locationName + "_4",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image5,
+  //         title: doc.data().locationName + "_5",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  //   mySnapshot.forEach((doc) => {
+  //     setImageUrl((arr) => [
+  //       ...arr,
+  //       {
+  //         src: doc.data().image6,
+  //         title: doc.data().locationName + "_6",
+  //         lName: doc.data().locationName,
+  //         url: `cityitem?i=${doc.data().locationId}`,
+  //       },
+  //     ]);
+  //   });
+  // };
+  const getGalleryData = async () => {
+    const ref = `/Gujarat/Cities/Gallery/GalleryImageData`;
+    const imageList = doc(db, ref);
+    const mySnapshot = await getDoc(imageList);
+    if (mySnapshot.exists()) {
+      setImageUrl(mySnapshot.data().images);
+      setLoading(false);
+    }
   };
   if (Loading) {
     return (
@@ -106,33 +116,18 @@ export default function Gallery() {
       </div>
     );
   }
-
-  const uploadGalleryData = async () => {
-    console.log("running...");
-    const ref = `/Gujarat/Cities/Gallery/GalleryImageData`;
-    const imageInformation = doc(firestore, ref);
-    const mySnapshot = await getDoc(imageInformation);
-    console.log("running2.0...");
-    await setDoc(imageInformation, {
-      images: ImageUrl,
-    })
-      .then(() => {
-        alert("Done!!");
-      })
-      .catch(alert);
-  };
   return (
     <div>
       <center>
         <div className="text-8xl font-suezone font-bold my-8 tracking-wide text-slate-400 opacity-50">
           Gallery
         </div>
-        <div className="mt-10">
+        {/* <div className="mt-10">
           <Button variant="solid" color="primary" onClick={uploadGalleryData}>
             Upload
           </Button>
-        </div>
-        {/* <Grid
+        </div> */}
+        <Grid
           container
           xs={11.5}
           spacing={2}
@@ -198,7 +193,7 @@ export default function Gallery() {
               </Link>
             </Grid>
           ))}
-        </Grid> */}
+        </Grid>
       </center>
     </div>
   );

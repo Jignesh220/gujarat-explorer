@@ -10,11 +10,12 @@ import { motion } from "framer-motion";
 import { db } from "@/Firebase/Firebase";
 import Image from "next/image";
 import { Box, Grid, Stack, Tooltip } from "@mui/joy";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import Link from "next/link";
 import { amber } from "@mui/material/colors";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
+import { Skeleton } from "@mui/material";
 
 export default function Tranding() {
   const [Cities, setCities] = React.useState<any[]>([]);
@@ -100,29 +101,51 @@ export default function Tranding() {
   };
   return (
     <div className="min-w-full mt-16">
-      {Loaded && (
-        <div className="md:px-32 min-[0px]:px-8">
-          <div className="md:pb-6 min-[0px]:pb-5">
-            <div
-              className="md:text-9xl sm:text-5xl min-[0px]:text-5xl font-extrabold tracking-wider drop-shadow-xl shadow-slate-500 font-suezone"
-              style={{
-                color: "rgb(22,78,99,0.2)",
-              }}
-            >
-              Tranding
-            </div>
-          </div>
-          <Grid container xs={11} justifyContent="center">
-            <Grid
-              xs={0}
-              md={6}
-              sx={{
-                display: { md: "block", xs: "none" },
-              }}
-            >
-              <div className="min-h-full min-w-full relative">
-                <div className="center-v-h-absolute">
-                  <div className="text-2xl">
+      <div className="md:px-32 min-[0px]:px-8">
+        <div className="md:pb-6 min-[0px]:pb-5">
+          <motion.div
+            initial={{
+              x: 100,
+              opacity: 0.8,
+            }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+            className="md:text-9xl sm:text-5xl min-[0px]:text-5xl font-extrabold tracking-wider drop-shadow-xl shadow-slate-500 font-suezone"
+            style={{
+              color: "rgb(22,78,99,0.2)",
+            }}
+          >
+            Tranding
+          </motion.div>
+        </div>
+        <Grid container xs={11} justifyContent="center">
+          <Grid
+            xs={0}
+            md={6}
+            sx={{
+              display: { md: "block", xs: "none" },
+            }}
+          >
+            <div className="min-h-full min-w-full relative">
+              <div className="center-v-h-absolute">
+                {Loaded ? (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    whileInView={{
+                      scale: 1,
+                      opacity: 1,
+                    }}
+                    className="text-2xl"
+                  >
                     {Cities.filter((_, index) => index == textIndex).map(
                       (city) => (
                         <div
@@ -136,80 +159,95 @@ export default function Tranding() {
                         </div>
                       )
                     )}
-                  </div>
-                </div>
+                  </motion.div>
+                ) : (
+                  <Typography component="div" variant="h1" width="100%">
+                    <Skeleton />
+                  </Typography>
+                )}
               </div>
-            </Grid>
-            <Grid md={6}>
-              <Box
-                sx={{
-                  width: { md: 700, xs: 250 },
-                  height: 400,
-                }}
-              >
-                <Swiper
-                  effect={"cards"}
-                  grabCursor={true}
-                  modules={[EffectCards]}
-                  loop={true}
-                  className="mySwiper rounded-3xl"
-                  onSlideChange={(swiper) => {
-                    handleClick();
-                    settextIndex(swiper.activeIndex);
-                  }}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  {Cities.map((city) => (
-                    <SwiperSlide
-                      className="flex justify-center items-center"
-                      key={city.cityName}
-                    >
-                      <Link href={`/city?c=${city.cityName}`}>
-                        <motion.div
-                          whileHover={{
-                            scale: 1.02,
-                          }}
-                          transition={{
-                            duration: 0.8,
-                            ease: "easeIn",
-                          }}
-                          className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
-                        >
-                          <Image
-                            src={city.coverImageUrl}
-                            alt={`${city.cityName}_cover`}
-                            fill={true}
-                            sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
-                            className="rounded-3xl object-cover"
-                          />
-                          <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
+            </div>
+          </Grid>
+          <Grid md={6}>
+            <Box
+              sx={{
+                width: { md: 700, xs: 250 },
+                height: 400,
+              }}
+            >
+              {Loaded ? (
+                  <Swiper
+                    effect={"cards"}
+                    grabCursor={true}
+                    modules={[EffectCards]}
+                    loop={true}
+                    className="mySwiper rounded-3xl"
+                    onSlideChange={(swiper) => {
+                      handleClick();
+                      settextIndex(swiper.activeIndex);
+                    }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    {Cities.map((city) => (
+                      <SwiperSlide
+                        className="flex justify-center items-center"
+                        key={city.cityName}
+                      >
+                        <Link href={`/city?c=${city.cityName}`}>
                           <motion.div
                             whileHover={{
-                              opacity: 1,
-                              color: amber[500],
+                              scale: 1.02,
                             }}
                             transition={{
-                              duration: 0.4,
+                              duration: 0.8,
                               ease: "easeIn",
                             }}
-                            className="md:hidden min-[0px]:flex md:text-7xl min-[0px]:text-3xl opacity-60 font-suezone min-h-full min-w-full absolute rounded-3xl center-v-h text-white font-bold tracking-wider"
+                            className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
                           >
-                            {city.cityName}
+                            <Image
+                              src={city.coverImageUrl}
+                              alt={`${city.cityName}_cover`}
+                              fill={true}
+                              sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
+                              className="rounded-3xl object-cover"
+                            />
+                            <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
+                            <motion.div
+                              whileHover={{
+                                opacity: 1,
+                                color: amber[500],
+                              }}
+                              transition={{
+                                duration: 0.4,
+                                ease: "easeIn",
+                              }}
+                              className="md:hidden min-[0px]:flex md:text-7xl min-[0px]:text-3xl opacity-60 font-suezone min-h-full min-w-full absolute rounded-3xl center-v-h text-white font-bold tracking-wider"
+                            >
+                              {city.cityName}
+                            </motion.div>
                           </motion.div>
-                        </motion.div>
-                      </Link>
-                    </SwiperSlide>
-                  ))}
-                  <NavigationButton />
-                </Swiper>
-              </Box>
-            </Grid>
+                        </Link>
+                      </SwiperSlide>
+                    ))}
+                    <NavigationButton />
+                  </Swiper>
+              ) : (
+                <Skeleton
+                  width="100%"
+                  height="100%"
+                  sx={{
+                    borderRadius: 8,
+                    backgroundColor: "#C6E0FF",
+                  }}
+                />
+              )}
+            </Box>
           </Grid>
-        </div>
-      )}
+        </Grid>
+      </div>
     </div>
   );
 }

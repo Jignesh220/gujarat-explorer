@@ -3,172 +3,185 @@ import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
-import { collection, getDocs } from "firebase/firestore";
+import CasinoTwoToneIcon from "@mui/icons-material/CasinoTwoTone";
+import { Skeleton } from "@mui/material";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  setDoc,
+  getFirestore,
+} from "firebase/firestore";
 import { db } from "@/Firebase/Firebase";
-import { CircularProgress, Grid } from "@mui/joy";
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/joy";
 import { motion } from "framer-motion";
 import Link from "next/link";
-export default function GalleryHome() {
+import { app } from "@/Firebase/Firebase";
+
+export default function Gallery() {
   const [ImageUrl, setImageUrl] = React.useState<any[]>([]);
   const [Loading, setLoading] = React.useState(true);
+  const [imageIndex, setImageIndex] = React.useState(
+    Math.floor(Math.random() * (450 - 8 + 1)) + 8
+  );
+  const firestore = getFirestore(app);
 
   React.useEffect(() => {
-    getUserData().then(() => {
-      setLoading(false);
-    });
+    getGalleryData();
   }, [db]);
 
-  const getUserData = async () => {
-    const ref = `/Gujarat/Cities/locationData`;
-    const imageList = collection(db, ref);
-    const mySnapshot = await getDocs(imageList);
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image1,
-          title: doc.data().locationName + "_1",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image2,
-          title: doc.data().locationName + "_2",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image3,
-          title: doc.data().locationName + "_3",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image4,
-          title: doc.data().locationName + "_4",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image5,
-          title: doc.data().locationName + "_5",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
-    mySnapshot.forEach((doc) => {
-      setImageUrl((arr) => [
-        ...arr,
-        {
-          src: doc.data().image6,
-          title: doc.data().locationName + "_6",
-          lName: doc.data().locationName,
-          url: `cityitem?i=${doc.data().locationId}`,
-        },
-      ]);
-    });
+  const getGalleryData = async () => {
+    const ref = `/Gujarat/Cities/Gallery/GalleryImageData`;
+    const imageList = doc(db, ref);
+    const mySnapshot = await getDoc(imageList);
+    if (mySnapshot.exists()) {
+      setImageUrl(mySnapshot.data().images);
+      setLoading(false);
+    }
   };
-  if (Loading) {
-    return (
-      <div className="min-h-screen min-w-full center-v-h text-9xl  font-suezone">
-        <CircularProgress variant="soft" size="lg" color="info" thickness={5} />
-      </div>
-    );
-  }
+
+  const handleRandomized = () => {
+    setImageIndex(Math.floor(Math.random() * (450 - 8 + 1)) + 8);
+  };
+
   return (
-    <div>
-      <center>
-        <div className="text-8xl font-suezone font-bold my-8 tracking-wide text-slate-400 opacity-50">
+    <div className="mt-32">
+      <center className="md:px-32 min-[0px]:px-8">
+        <div className="text-start text-8xl font-suezone font-bold my-8 tracking-wide text-slate-400 opacity-50">
           Gallery
         </div>
-        <Grid
-          container
-          xs={11.5}
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-        >
-          {ImageUrl.slice(0, 6).map((item) => (
-            <Grid xs={12} sm={6} md={4} lg={3} key={item.title}>
-              <Link href={`/${item.url}`}>
-                <motion.div
-                  initial={{
-                    opacity: 0,
+        <div className="flex justify-end min-w-full mb-8">
+          <Stack direction="row" gap={2}>
+            <Tooltip title="Randomized" placement="left" arrow>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                onClick={handleRandomized}
+              >
+                <CasinoTwoToneIcon
+                  color="primary"
+                  sx={{
+                    fontSize: 40,
                   }}
-                  whileInView={{
-                    opacity: 1,
+                />
+              </motion.button>
+            </Tooltip>
+
+            <Link href="/gallery">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white md:text-base min-[0px]:text-xs font-bold font-outfit tracking-wider bg-gradient-to-br from-blue-300 via-blue-500 to-blue-700 py-2 md:px-6 min-[0px]:px-3 rounded-full"
+              >
+                Show All
+              </motion.button>
+            </Link>
+          </Stack>
+        </div>
+        {Loading ? (
+          <Grid
+            container
+            xs={12}
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {Array.from(Array(8)).map((_, index) => (
+              <Grid xs={6} sm={6} md={4} lg={3} key={index}>
+                <Skeleton
+                  variant="rectangular"
+                  animation="pulse"
+                  width="100%"
+                  height={200}
+                  sx={{
+                    borderRadius: 8,
+                    backgroundColor: "#C6E0FF",
                   }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  className="min-h-full min-w-full relative group"
-                >
-                  <div
-                    className="md:hidden min-[0px]:block group-hover:block min-h-full min-w-full absolute rounded-3xl"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0) 300px)",
+                />
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Grid
+            container
+            xs={12}
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {ImageUrl.slice(imageIndex - 8, imageIndex).map((item) => (
+              <Grid xs={6} sm={6} md={4} lg={3} key={item.title}>
+                <Link href={`/${item.url}`}>
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0.9,
+                      x: 40,
                     }}
-                  ></div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: "50%",
-                      transform: "translate(-50%,-50%)",
+                    whileInView={{
+                      opacity: 1,
+                      scale: 1,
+                      x: 0,
                     }}
-                    className="md:hidden min-[0px]:block group-hover:block"
+                    transition={{
+                      duration: 0.8,
+                      ease: "easeInOut",
+                    }}
+                    className="min-h-full min-w-full relative group"
                   >
-                    <motion.div
-                      initial={{
-                        opacity: 0,
+                    <div
+                      className="md:hidden min-[0px]:block group-hover:block min-h-full min-w-full absolute rounded-3xl"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0) 300px)",
                       }}
-                      whileInView={{
-                        opacity: 1,
+                    ></div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: "50%",
+                        transform: "translate(-50%,-50%)",
                       }}
-                      transition={{
-                        duration: 0.8,
-                        ease: "easeInOut",
-                      }}
-                      className="text-white font-outfit font-bold md:tracking-wide min-[0px]:tracking-wider md:text-xl min-[0px]:text-sm"
+                      className="md:hidden min-[0px]:block group-hover:block"
                     >
-                      {item.lName}
-                    </motion.div>
-                  </div>
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    height={300}
-                    width={500}
-                    className="rounded-3xl"
-                  />
-                </motion.div>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                        }}
+                        transition={{
+                          duration: 0.8,
+                          ease: "easeInOut",
+                        }}
+                        className="text-white font-outfit font-bold md:tracking-wide min-[0px]:tracking-wider md:text-xl min-[0px]:text-xs"
+                      >
+                        {item.lName}
+                      </motion.div>
+                    </div>
+                    <Image
+                      src={item.src}
+                      alt={item.title}
+                      height={300}
+                      width={500}
+                      className="rounded-3xl"
+                    />
+                  </motion.div>
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </center>
     </div>
   );

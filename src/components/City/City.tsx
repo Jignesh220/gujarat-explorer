@@ -201,17 +201,35 @@ export default function City() {
           >
             <div className="center-v-h-absolute min-w-full md:p-20 min-[0px]:p-8">
               {City.map((item) => (
-                <Stack direction="column" gap={2} key={item.cityName}>
-                  <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
-                    Welcome
-                  </div>
-                  <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
-                    To <span className="text-blue-500">{item.cityName}</span>
-                  </div>
-                  <div className="md:text-xl min-[0px]:text-sm text-slate-300 font-outfit opacity-95 tracking-wide">
-                    {item.about}
-                  </div>
-                </Stack>
+                <motion.div
+                  initial={{
+                    scale: 0.8,
+                    opacity: 0,
+                    x: -50,
+                  }}
+                  whileInView={{
+                    scale: 1,
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeInOut",
+                  }}
+                  key={item.cityName}
+                >
+                  <Stack direction="column" gap={2}>
+                    <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
+                      Welcome
+                    </div>
+                    <div className="md:text-5xl min-[0px]:text-2xl font-bold text-white uppercase font-aboreto">
+                      To <span className="text-blue-500">{item.cityName}</span>
+                    </div>
+                    <div className="md:text-xl min-[0px]:text-sm text-slate-300 font-outfit opacity-95 tracking-wide">
+                      {item.about}
+                    </div>
+                  </Stack>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -321,13 +339,17 @@ export default function City() {
                               }}
                               initial={{
                                 opacity: 0,
+                                x: -50,
+                                scale: 0.9,
                               }}
                               whileInView={{
                                 opacity: 1,
+                                x: 0,
+                                scale: 1,
                               }}
                               transition={{
-                                duration: 0.8,
-                                ease: "easeIn",
+                                duration: 1,
+                                ease: "easeInOut",
                               }}
                               exit={{
                                 opacity: 0,
