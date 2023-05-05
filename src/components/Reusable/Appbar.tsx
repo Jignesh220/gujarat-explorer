@@ -105,10 +105,15 @@ function Appbar() {
                     type="submit"
                     sx={{
                       borderRadius: 999,
-                      backgroundColor: "#fff",
+                      backgroundColor: "#ffffff2a",
+                      backdropFilter: 'blur(5px)'
                     }}
                   >
-                    <SearchRoundedIcon color="info" />
+                    <SearchRoundedIcon
+                      sx={{
+                        color: "#fff",
+                      }}
+                    />
                   </IconButton>
                 </Stack>
               </form>
@@ -159,7 +164,8 @@ function Appbar() {
                     type="submit"
                     sx={{
                       borderRadius: 999,
-                      backgroundColor: "#fff",
+                      backgroundColor: "#ffffff2a",
+                      backdropFilter: 'blur(5px)'
                     }}
                   >
                     <SearchRoundedIcon

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
+  swcMinify: true,
+  output: 'standalone',
   images: {
     formats: ['image/webp'],
     remotePatterns: [
