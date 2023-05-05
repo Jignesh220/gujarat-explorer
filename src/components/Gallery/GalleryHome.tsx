@@ -3,24 +3,14 @@ import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  setDoc,
-  getFirestore,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/Firebase/Firebase";
-import { Button, CircularProgress, Grid } from "@mui/joy";
+import { CircularProgress, Grid } from "@mui/joy";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { app } from "@/Firebase/Firebase";
-
-export default function Gallery() {
+export default function GalleryHome() {
   const [ImageUrl, setImageUrl] = React.useState<any[]>([]);
   const [Loading, setLoading] = React.useState(true);
-  const firestore = getFirestore(app);
 
   React.useEffect(() => {
     getUserData().then(() => {
@@ -106,40 +96,20 @@ export default function Gallery() {
       </div>
     );
   }
-
-  const uploadGalleryData = async () => {
-    console.log("running...");
-    const ref = `/Gujarat/Cities/Gallery/GalleryImageData`;
-    const imageInformation = doc(firestore, ref);
-    const mySnapshot = await getDoc(imageInformation);
-    console.log("running2.0...");
-    await setDoc(imageInformation, {
-      images: ImageUrl,
-    })
-      .then(() => {
-        alert("Done!!");
-      })
-      .catch(alert);
-  };
   return (
     <div>
       <center>
         <div className="text-8xl font-suezone font-bold my-8 tracking-wide text-slate-400 opacity-50">
           Gallery
         </div>
-        <div className="mt-10">
-          <Button variant="solid" color="primary" onClick={uploadGalleryData}>
-            Upload
-          </Button>
-        </div>
-        {/* <Grid
+        <Grid
           container
           xs={11.5}
           spacing={2}
           justifyContent="center"
           alignItems="center"
         >
-          {ImageUrl.map((item) => (
+          {ImageUrl.slice(0, 6).map((item) => (
             <Grid xs={12} sm={6} md={4} lg={3} key={item.title}>
               <Link href={`/${item.url}`}>
                 <motion.div
@@ -198,7 +168,7 @@ export default function Gallery() {
               </Link>
             </Grid>
           ))}
-        </Grid> */}
+        </Grid>
       </center>
     </div>
   );

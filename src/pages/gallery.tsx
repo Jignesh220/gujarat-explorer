@@ -19,6 +19,7 @@ export default function gallery() {
         <Appbar />
         <Toolbar/>
         <Gallery />
+        {/* <div className="text-5xl font-outfit font-bold text-center min-h-screen pt-8">Coming Soon</div> */}
         <Footer />
       </div>
     </div>
