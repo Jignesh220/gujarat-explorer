@@ -2,12 +2,17 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../images/Logo/logo.png";
+import { Stack } from "@mui/joy";
 
 export default function Footer() {
   return (
-    <footer aria-label="Site Footer" className="mt-60" style={{
-      backgroundColor: '#011D3E'
-    }}>
+    <footer
+      aria-label="Site Footer"
+      className="mt-24"
+      style={{
+        backgroundColor: "#011D3E",
+      }}
+    >
       <div className="mx-auto max-w-5xl px-4 pt-16 pb-5 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           {/* <svg
@@ -296,14 +301,35 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-        <nav aria-label="Footer Nav copyright" className="min-w-full text-center">
-          <div className="text-white text-base mt-12 font-outfit tracking-wide">
-            Copyright &copy;2023{" "}
-            <span className="text-blue-300">
-              {"  "}
-              <Link href="/">Gujarat Explorer</Link>
-            </span>
-          </div>
+        <nav
+          aria-label="Footer Nav copyright"
+          className="min-w-full text-center"
+        >
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            gap={2}
+            justifyContent="center"
+          >
+            <div className="text-white text-base md:mt-12 min-[0px]:mt-12 font-outfit tracking-wide">
+              Develop and Design By{" "}
+              <span className="text-blue-300">
+                {"  "}
+                <Link
+                  href="https://www.linkedin.com/in/jignesh-baria/"
+                  target="_blank"
+                >
+                  Jignesh Baria
+                </Link>
+              </span>
+            </div>
+            <div className="text-white text-base md:mt-12 min-[0px]:mt-1 font-outfit tracking-wide">
+              Copyright &copy;2023{" "}
+              <span className="text-blue-300">
+                {"  "}
+                <Link href="/">Gujarat Explorer</Link>
+              </span>
+            </div>
+          </Stack>
         </nav>
       </div>
     </footer>

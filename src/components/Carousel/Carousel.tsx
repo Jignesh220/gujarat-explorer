@@ -25,18 +25,55 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
+import { Box } from "@mui/joy";
+
+const ImageArray = [
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fsasan_gir.webp?alt=media&token=66749331-d740-49c4-a532-26f40ba1bdf1",
+    title: "Gir National Park",
+    subTitle: "Gir National Park",
+    url: "/cityitem?i=36ab0696-db20-4cd0-bcda-871f977f02c8",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fjambughoda.webp?alt=media&token=bde99df3-5612-4caa-b677-38b8c4d0103c",
+    title: "Jambughoda Wildlife Sanctuary",
+    subTitle: "Wildlife and safari park in Gujarat",
+    url: "/cityitem?i=ac401fd1-d513-4ae2-a228-2a241aa6b1f5",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fpavagadh.webp?alt=media&token=4782f59b-32bb-4451-bae6-43975eb454b4",
+    title: "Pavagadh",
+    subTitle: "Hill station in India",
+    url: "/cityitem?i=3e8f4dcc-b715-4acd-a1f0-ab75968e8c07",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Frani_ni_vav.webp?alt=media&token=bf473f2c-a88d-4e40-bca2-7bf5953a2c64",
+    title: "Rani Ki Vav",
+    subTitle: "Historical landmark in Gujarat",
+    url: "/cityitem?i=d38fbc84-cf17-4ff9-9510-b7c8e9a3abab",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fwhite_ran.webp?alt=media&token=cabab91d-432e-4b30-8c49-14d0ce10310a",
+    title: "Rann of Kutch",
+    subTitle: "Tourist place",
+    url: "/cityitem?i=341011c2-67d3-496e-bbec-b7a6613c626c",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fsaputara.webp?alt=media&token=915f10a1-2ad8-4f1b-8937-b49070a91aae",
+    title: "Saputara",
+    subTitle: "Hill station in India",
+    url: "/cityitem?i=aab1f176-ba41-4913-862d-8ea273314274",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/Home%2Fakashardham.webp?alt=media&token=01954464-f01c-45bd-a1d1-33434d3a7ebb",
+    title: "Akshardham Temple",
+    subTitle: "Hindu temple in Gandhinagar",
+    url: "/cityitem?i=28387428-18e7-4dbb-a960-263eea205d0a",
+  },
+];
 
 export default function Carousel() {
   const [ImageView1, setImageView1] = React.useState(false);
-  const [ImageView2, setImageView2] = React.useState(false);
-  const [ImageView3, setImageView3] = React.useState(false);
-  const [ImageView4, setImageView4] = React.useState(false);
-  const [ImageView5, setImageView5] = React.useState(false);
-  const [ImageView6, setImageView6] = React.useState(false);
-  const [ImageView7, setImageView7] = React.useState(false);
-  const [ImageView8, setImageView8] = React.useState(false);
-  const [ImageView9, setImageView9] = React.useState(false);
-  const [ImageView10, setImageView10] = React.useState(false);
   return (
     <div>
       <Toolbar />
@@ -49,542 +86,74 @@ export default function Carousel() {
           className="mySwiper text-white"
           autoplay={true}
         >
-          <SwiperSlide>
-            <Link href="/cityitem?i=36ab0696-db20-4cd0-bcda-871f977f02c8" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView1(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView1(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView1
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
+          {ImageArray.map((item) => (
+            <SwiperSlide key={item.url}>
+              <Link href={item.url} className="min-h-full min-w-full">
+                <Box
+                  sx={{
+                    minHeight: { xs: 300, md: 700 },
+                    width: "100%",
+                    position: "relative",
                   }}
-                  animate={
-                    ImageView1
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-white font-bold"
                 >
+                  <Image
+                    src={item.src}
+                    alt="Image 1"
+                    fill
+                    sizes="(max-width: 768px) 100vw,(max-width: 9999px) 150vw"
+                    className="md:rounded-3xl min-[0px]:rounded-2xl object-cover bg-black"
+                  />
                   <motion.div
-                    className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500"
+                    className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
+                    onViewportEnter={() => {
+                      setImageView1(true);
+                    }}
+                    onViewportLeave={() => {
+                      setImageView1(false);
+                    }}
+                    initial={{
+                      backdropFilter: "blur(5px)",
+                      opacity: 1,
+                      background:
+                        "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    whileInView={{
+                      backdropFilter: "blur(0px)",
+                      justifyContent: "center",
+                      alignItems: "end",
+                    }}
+                    transition={{
+                      duration: 1,
+                      ease: "easeIn",
+                    }}
                   >
-                    Gir National Park
+                    <motion.div
+                      initial={{
+                        y: -40,
+                      }}
+                      whileInView={{
+                        y: 0,
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        ease: "easeIn",
+                      }}
+                      className="text-white font-bold"
+                    >
+                      <motion.div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">
+                        {item.title}
+                      </motion.div>
+                      <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
+                        {item.subTitle}
+                      </div>
+                    </motion.div>
                   </motion.div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Gir National Park
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={SasanGir} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=ac401fd1-d513-4ae2-a228-2a241aa6b1f5" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                onViewportEnter={() => {
-                  setImageView2(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView2(false);
-                }}
-                animate={
-                  ImageView2
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView2
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">
-                    Jambughoda Wildlife Sanctuary
-                  </div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Wildlife and safari park in Gujarat
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Jambughoda} alt="Image 2" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=3e8f4dcc-b715-4acd-a1f0-ab75968e8c07" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView4(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView4(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView4
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView4
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Pavagadh</div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Hill station in India
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Pavagadh} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=d38fbc84-cf17-4ff9-9510-b7c8e9a3abab" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group "
-                onViewportEnter={() => {
-                  setImageView5(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView5(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView5
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView5
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Rani Ki Vav</div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Historical landmark in Gujarat
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={RaniNiVav} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=341011c2-67d3-496e-bbec-b7a6613c626c" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView6(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView6(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView6
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView6
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Rann of Kutch</div>
-                </motion.div>
-              </motion.div>
-              <Image src={WhiteRan} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=aab1f176-ba41-4913-862d-8ea273314274" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView7(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView7(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView7
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView7
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Saputara</div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Hill station in India
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Saputara} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView8(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView8(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView8
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView8
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Vadnagar</div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Historical landmark
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Vadnagar} alt="Image 1" className="rounded-3xl" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link href="/cityitem?i=28387428-18e7-4dbb-a960-263eea205d0a" className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView9(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView9(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView9
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView9
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">
-                    Akshardham Temple
-                  </div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Hindu temple in Gandhinagar
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Akashardham} alt="Image 1" className="rounded-3xl" />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="min-h-full min-w-full relative">
-              <motion.div
-                className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
-                onViewportEnter={() => {
-                  setImageView10(true);
-                }}
-                onViewportLeave={() => {
-                  setImageView10(false);
-                }}
-                initial={{
-                  backdropFilter: "blur(5px)",
-                  opacity: 1,
-                  background: "none",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                animate={
-                  ImageView10
-                    ? {
-                        backdropFilter: "blur(0px)",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 300px)",
-                        justifyContent: "center",
-                        alignItems: "end",
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1,
-                  ease: "easeIn",
-                }}
-              >
-                <motion.div
-                  initial={{
-                    y: -40,
-                  }}
-                  animate={
-                    ImageView10
-                      ? {
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeIn",
-                  }}
-                  className="text-3xl text-white font-bold"
-                >
-                  <div className="md:text-5xl min-[0px]:text-xl opacity-50 font-suezone text-center md:mb-3 min-[0px]:mb-1 tracking-wider group-hover:opacity-100 group-hover:text-amber-300 transition ease-in duration-500">Smritivan</div>
-                  <div className="md:text-xl min-[0px]:text-sm font-suezone font-normal text-center text-slate-300 tracking-wider">
-                    Smritivan Earthquake Memorial and Museum
-                  </div>
-                </motion.div>
-              </motion.div>
-              <Image src={Miya} alt="Image 1" className="rounded-3xl" />
-            </div>
-          </SwiperSlide>
+                </Box>
+              </Link>
+            </SwiperSlide>
+          ))}
           <NavigationButton />
         </Swiper>
       </div>

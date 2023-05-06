@@ -263,7 +263,6 @@ export default function Home() {
               key={item.locationDataId}
               initial={{
                 opacity: 0,
-                x: 40,
               }}
               whileInView={{
                 opacity: 1,

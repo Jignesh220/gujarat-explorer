@@ -60,7 +60,9 @@ function AppbarFixed() {
               color: "#000",
             }}
           >
-            <Image src={Logo} alt="Logo" width={30} />
+            <Link href="/" className="my-auto">
+              <Image src={Logo} alt="Logo" width={40} height={40} />
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -81,7 +83,9 @@ function AppbarFixed() {
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
             <Stack direction="row" gap={1}>
-              <Image src={Logo} alt="Logo" width={40} height={40} />
+              <Link href="/" className="my-auto">
+                <Image src={Logo} alt="Logo" width={40} height={40} />
+              </Link>
               <form onSubmit={handleSubmit}>
                 <Stack direction="row" gap={1}>
                   <Autocomplete

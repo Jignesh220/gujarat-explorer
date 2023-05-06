@@ -55,9 +55,24 @@ export default function Gallery() {
   return (
     <div className="mt-32">
       <center className="md:px-32 min-[0px]:px-8">
-        <div className="text-start text-8xl font-suezone font-bold my-8 tracking-wide text-slate-400 opacity-50">
+        <motion.div
+          initial={{
+            opacity: 0.8,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut",
+          }}
+          className="text-start md:text-9xl sm:text-5xl min-[0px]:text-5xl font-extrabold tracking-wider drop-shadow-xl shadow-slate-500 font-suezone"
+          style={{
+            color: "rgb(22,78,99,0.2)",
+          }}
+        >
           Gallery
-        </div>
+        </motion.div>
         <div className="flex justify-end min-w-full mb-8">
           <Stack direction="row" gap={2}>
             <Tooltip title="Randomized" placement="left" arrow>
@@ -69,7 +84,7 @@ export default function Gallery() {
                 <CasinoTwoToneIcon
                   color="primary"
                   sx={{
-                    fontSize: 40,
+                    fontSize: { xs: 30, md: 40 },
                   }}
                 />
               </motion.button>
@@ -95,7 +110,7 @@ export default function Gallery() {
             alignItems="center"
           >
             {Array.from(Array(8)).map((_, index) => (
-              <Grid xs={6} sm={6} md={4} lg={3} key={index}>
+              <Grid xs={5} sm={5} md={4} lg={3} key={index}>
                 <Skeleton
                   variant="rectangular"
                   animation="pulse"
@@ -124,12 +139,10 @@ export default function Gallery() {
                     initial={{
                       opacity: 0,
                       scale: 0.9,
-                      x: 40,
                     }}
                     whileInView={{
                       opacity: 1,
                       scale: 1,
-                      x: 0,
                     }}
                     transition={{
                       duration: 0.8,

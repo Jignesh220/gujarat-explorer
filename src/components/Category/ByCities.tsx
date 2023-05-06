@@ -33,11 +33,9 @@ export default function ByCities() {
         <div className="md:pb-6 min-[0px]:pb-5">
           <motion.div
             initial={{
-              x: 100,
               opacity: 0.8,
             }}
             whileInView={{
-              x: 0,
               opacity: 1,
             }}
             transition={{
@@ -54,11 +52,9 @@ export default function ByCities() {
           <div className="flex justify-end min-w-full">
             <motion.button
               initial={{
-                x: -100,
                 opacity: 0.8,
               }}
               whileInView={{
-                x: 0,
                 opacity: 1,
               }}
               transition={{
@@ -95,7 +91,6 @@ export default function ByCities() {
                     }}
                     initial={{
                       opacity: 0,
-                      x: -40,
                       scale: 0.8,
                     }}
                     transition={{
@@ -104,7 +99,6 @@ export default function ByCities() {
                     }}
                     whileInView={{
                       opacity: 1,
-                      x: 0,
                       scale: 1,
                     }}
                     className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"

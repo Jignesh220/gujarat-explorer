@@ -105,11 +105,9 @@ export default function Tranding() {
         <div className="md:pb-6 min-[0px]:pb-5">
           <motion.div
             initial={{
-              x: 100,
               opacity: 0.8,
             }}
             whileInView={{
-              x: 0,
               opacity: 1,
             }}
             transition={{
