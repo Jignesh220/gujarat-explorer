@@ -45,13 +45,13 @@ export default function Home() {
     }
   };
   return (
-    <div>
+    <div className="my-16">
       <Grid container columns={{ xs: 12, sm: 12, md: 12 }}>
         <Grid
           xs={12}
           md={6}
           sx={{
-            minHeight: "100vh",
+            minHeight: "80vh",
             padding: 2,
             backgroundColor: "#fff",
             position: "relative",
@@ -62,19 +62,17 @@ export default function Home() {
               key={item.locationDataId}
               initial={{
                 opacity: 0,
-                x: -40,
               }}
               whileInView={{
                 opacity: 1,
-                x: 0,
               }}
               transition={{
                 duration: 1,
-                ease: "easeInOut",
+                type:"spring",
               }}
-              className="min-h-full min-w-full rounded-3xl"
+              className="min-h-full min-w-full rounded-3xl mt-16"
             >
-              <div className="center-v-h-absolute min-w-full">
+              <div className="min-w-full">
                 <center>
                   <div className="md:hidden min-[0px]:block text-5xl font-outfit font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-blue-400 to-violet-400">
                     {item.locationName}
@@ -90,17 +88,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -116,17 +110,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -142,17 +132,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -168,17 +154,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -194,17 +176,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -220,17 +198,13 @@ export default function Home() {
                         <motion.div
                           initial={{
                             opacity: 0,
-                            x: -40,
-                            scale: 0.8,
                           }}
                           whileInView={{
                             opacity: 1,
-                            x: 0,
-                            scale: 1,
                           }}
                           transition={{
                             duration: 1,
-                            ease: "easeInOut",
+                            type: "spring",
                           }}
                         >
                           <img
@@ -253,7 +227,7 @@ export default function Home() {
           xs={12}
           md={6}
           sx={{
-            minHeight: "100vh",
+            minHeight: "80vh",
             padding: { md: 2, xs: 1 },
             backgroundColor: "#fff",
           }}
@@ -272,7 +246,7 @@ export default function Home() {
                 duration: 1,
                 ease: "easeInOut",
               }}
-              className="min-h-full min-w-full bg-gradient-to-br from-slate-800 from-10% via-slate-900 to-black to-95% shadow-2xl shadow-slate-200 rounded-3xl py-16 md:px-14 min-[0px]:px-5 text-white"
+              className="h-[90vh] overflow-hidden overflow-y-scroll scrollbar-hidden min-w-full bg-gradient-to-br from-slate-800 from-10% via-slate-900 to-black to-95% shadow-2xl shadow-slate-200 rounded-3xl py-16 md:px-14 min-[0px]:px-5 text-white"
             >
               <div className="text-5xl text-center font-outfit font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-blue-600 to-violet-600">
                 {item.locationName}

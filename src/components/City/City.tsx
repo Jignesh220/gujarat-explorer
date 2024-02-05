@@ -161,7 +161,7 @@ export default function City() {
     );
   };
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-[99vh]">
       <div className="bg-black min-h-full min-w-full absolute md:hidden min-[0px]:block"></div>
       <motion.div
         initial={{
@@ -172,7 +172,7 @@ export default function City() {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="absolute min-h-full min-w-full bg-black"
+        className="absolute min-h-[99vh] min-w-full bg-black"
       >
         <div className="md:block min-[0px]:hidden">
           {ImageArray.filter((_, index) => index === imageIndex).map((item) => {
@@ -354,7 +354,7 @@ export default function City() {
                               <img
                                 src={img.src}
                                 alt="image_1"
-                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
+                                className="object-cover md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
                                 className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"

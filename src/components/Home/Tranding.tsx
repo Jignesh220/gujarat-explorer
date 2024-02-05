@@ -100,7 +100,7 @@ export default function Tranding() {
     );
   };
   return (
-    <div className="min-w-full mt-16">
+    <div className="min-w-full mt-32">
       <div className="md:px-32 min-[0px]:px-8">
         <div className="md:pb-6 min-[0px]:pb-5">
           <motion.div
@@ -148,9 +148,10 @@ export default function Tranding() {
                       (city) => (
                         <div
                           key={city.cityName}
-                          className="text-8xl font-suezone tracking-wider font-bold"
+                          className="text-6xl font-suezone tracking-wider font-bold"
                           style={{
                             color: color,
+                            opacity: 0.7,
                           }}
                         >
                           {city.cityName}
