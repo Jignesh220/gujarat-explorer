@@ -354,7 +354,6 @@ export default function City() {
                               <img
                                 src={img.src}
                                 alt="image_1"
-                                fill
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
