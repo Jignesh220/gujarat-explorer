@@ -2,7 +2,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import Image from "next/image";
 import CasinoTwoToneIcon from "@mui/icons-material/CasinoTwoTone";
 import { Skeleton } from "@mui/material";
 import {
@@ -182,7 +181,7 @@ export default function Gallery() {
                         {item.lName}
                       </motion.div>
                     </div>
-                    <Image
+                    <img
                       src={item.src}
                       alt={item.title}
                       height={300}

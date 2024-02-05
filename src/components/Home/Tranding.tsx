@@ -205,7 +205,7 @@ export default function Tranding() {
                             }}
                             className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
                           >
-                            <Image
+                            <img
                               src={city.coverImageUrl}
                               alt={`${city.cityName}_cover`}
                               fill={true}

@@ -2,7 +2,6 @@ import React from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { db } from "@/Firebase/Firebase";
-import Image from "next/image";
 import { Grid, Stack } from "@mui/joy";
 import Link from "next/link";
 import { amber } from "@mui/material/colors";
@@ -122,7 +121,7 @@ export default function ByCities() {
                     >
                       {city.cityName}
                     </motion.div>
-                    <Image
+                    <img
                       src={city.coverImageUrl}
                       alt={`${city.cityName}_cover`}
                       width={1000}
