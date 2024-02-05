@@ -35,10 +35,9 @@ export default function Admin() {
   return (
     <div>
       <div className="min-h-screen min-w-full relative">
-        <Image
+        <img
         src={'https://firebasestorage.googleapis.com/v0/b/gujarat-explorer.appspot.com/o/pexels-sam-kolder-2387873.jpg?alt=media&token=d45b8601-5aad-4e08-a036-2aa893551614'}
         alt="background_image_admin"
-        fill={true}
         className="absolute object-cover"
         />
         <div className="min-h-full min-w-full absolute"

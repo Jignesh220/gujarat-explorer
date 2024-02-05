@@ -177,13 +177,9 @@ export default function City() {
         <div className="md:block min-[0px]:hidden">
           {ImageArray.filter((_, index) => index === imageIndex).map((item) => {
             return (
-              <Image
+              <img
                 key={item.id}
                 src={item.src}
-                fill
-                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
                 alt="Cover_Image"
                 className="bg-black object-cover"
               />
@@ -255,13 +251,9 @@ export default function City() {
               {ImageArray.filter((_, index) => index === imageIndex).map(
                 (item) => {
                   return (
-                    <Image
+                    <img
                       key={item.id}
                       src={item.src}
-                      fill
-                      sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
                       alt="Cover_Image"
                       className="bg-black object-cover"
                     />
@@ -359,13 +351,10 @@ export default function City() {
                               //   setImageCover(img);
                               // }}
                             >
-                              <Image
+                              <img
                                 src={img.src}
                                 alt="image_1"
                                 fill
-                                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
@@ -429,13 +418,9 @@ export default function City() {
                               //   setImageCover(img);
                               // }}
                             >
-                              <Image
+                              <img
                                 src={img.src}
                                 alt="image_1"
-                                fill
-                                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
@@ -499,13 +484,9 @@ export default function City() {
                               //   setImageCover(img);
                               // }}
                             >
-                              <Image
+                              <img
                                 src={img.src}
                                 alt="image_1"
-                                fill
-                                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
                                 className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div

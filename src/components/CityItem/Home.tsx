@@ -103,7 +103,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image1}
                             alt="image_1"
                             width={700}
@@ -129,7 +129,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image2}
                             alt="image_2"
                             width={700}
@@ -155,7 +155,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image3}
                             alt="image_3"
                             width={700}
@@ -181,7 +181,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image4}
                             width={700}
                             height={500}
@@ -207,7 +207,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image5}
                             alt="image_5"
                             width={700}
@@ -233,7 +233,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                         >
-                          <Image
+                          <img
                             src={item.image6}
                             alt="image_6"
                             width={700}

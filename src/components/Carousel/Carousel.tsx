@@ -96,11 +96,9 @@ export default function Carousel() {
                     position: "relative",
                   }}
                 >
-                  <Image
+                  <img
                     src={item.src}
                     alt="Image 1"
-                    fill
-                    sizes="(max-width: 768px) 100vw,(max-width: 9999px) 150vw"
                     className="md:rounded-3xl min-[0px]:rounded-2xl object-cover bg-black"
                   />
                   <motion.div
