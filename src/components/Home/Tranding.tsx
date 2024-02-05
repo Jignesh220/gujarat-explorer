@@ -65,7 +65,11 @@ export default function Tranding() {
           marginTop: 2,
         }}
       >
-        <Tooltip title="Prev" arrow placement="left">
+        <Tooltip
+          title="Prev"
+          arrow
+          placement="left"
+        >
           <IconButton
             onClick={() => {
               swiper.slidePrev();
@@ -77,10 +81,17 @@ export default function Tranding() {
               lineHeight: "1.75rem",
             }}
           >
-            <ArrowCircleLeftTwoToneIcon color="primary" sx={{ fontSize: 40 }} />
+            <ArrowCircleLeftTwoToneIcon
+              color="primary"
+              sx={{ fontSize: 40 }}
+            />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Next" arrow placement="right">
+        <Tooltip
+          title="Next"
+          arrow
+          placement="right"
+        >
           <IconButton
             onClick={() => {
               swiper.slideNext();
@@ -122,7 +133,11 @@ export default function Tranding() {
             Tranding
           </motion.div>
         </div>
-        <Grid container xs={11} justifyContent="center">
+        <Grid
+          container
+          xs={11}
+          justifyContent="center"
+        >
           <Grid
             xs={0}
             md={6}
@@ -156,11 +171,15 @@ export default function Tranding() {
                         >
                           {city.cityName}
                         </div>
-                      )
+                      ),
                     )}
                   </motion.div>
                 ) : (
-                  <Typography component="div" variant="h1" width="100%">
+                  <Typography
+                    component="div"
+                    variant="h1"
+                    width="100%"
+                  >
                     <Skeleton />
                   </Typography>
                 )}
