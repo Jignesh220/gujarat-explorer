@@ -174,64 +174,62 @@ export default function Tranding() {
               }}
             >
               {Loaded ? (
-                  <Swiper
-                    effect={"cards"}
-                    grabCursor={true}
-                    modules={[EffectCards]}
-                    loop={true}
-                    className="mySwiper rounded-3xl"
-                    onSlideChange={(swiper) => {
-                      handleClick();
-                      settextIndex(swiper.activeIndex);
-                    }}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
-                    {Cities.map((city) => (
-                      <SwiperSlide
-                        className="flex justify-center items-center"
-                        key={city.cityName}
-                      >
-                        <Link href={`/city?c=${city.cityName}`}>
+                <Swiper
+                  effect={"cards"}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  loop={true}
+                  className="mySwiper rounded-3xl"
+                  onSlideChange={(swiper) => {
+                    handleClick();
+                    settextIndex(swiper.activeIndex);
+                  }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  {Cities.map((city) => (
+                    <SwiperSlide
+                      className="flex justify-center items-center"
+                      key={city.cityName}
+                    >
+                      <Link href={`/city?c=${city.cityName}`}>
+                        <motion.div
+                          whileHover={{
+                            scale: 1.02,
+                          }}
+                          transition={{
+                            duration: 0.8,
+                            ease: "easeIn",
+                          }}
+                          className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
+                        >
+                          <img
+                            src={city.coverImageUrl}
+                            alt={`${city.cityName}_cover`}
+                            className="rounded-3xl object-cover"
+                          />
+                          <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
                           <motion.div
                             whileHover={{
-                              scale: 1.02,
+                              opacity: 1,
+                              color: amber[500],
                             }}
                             transition={{
-                              duration: 0.8,
+                              duration: 0.4,
                               ease: "easeIn",
                             }}
-                            className="min-h-full min-w-full relative md:rounded-3xl min-[0px]:rounded-xl shadow-xl shadow-slate-500"
+                            className="md:hidden min-[0px]:flex md:text-7xl min-[0px]:text-3xl opacity-60 font-suezone min-h-full min-w-full absolute rounded-3xl center-v-h text-white font-bold tracking-wider"
                           >
-                            <img
-                              src={city.coverImageUrl}
-                              alt={`${city.cityName}_cover`}
-                              fill={true}
-                              sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
-                              className="rounded-3xl object-cover"
-                            />
-                            <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
-                            <motion.div
-                              whileHover={{
-                                opacity: 1,
-                                color: amber[500],
-                              }}
-                              transition={{
-                                duration: 0.4,
-                                ease: "easeIn",
-                              }}
-                              className="md:hidden min-[0px]:flex md:text-7xl min-[0px]:text-3xl opacity-60 font-suezone min-h-full min-w-full absolute rounded-3xl center-v-h text-white font-bold tracking-wider"
-                            >
-                              {city.cityName}
-                            </motion.div>
+                            {city.cityName}
                           </motion.div>
-                        </Link>
-                      </SwiperSlide>
-                    ))}
-                    <NavigationButton />
-                  </Swiper>
+                        </motion.div>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                  <NavigationButton />
+                </Swiper>
               ) : (
                 <Skeleton
                   width="100%"
