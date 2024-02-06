@@ -132,7 +132,7 @@ export default function Gallery() {
             alignItems="center"
           >
             {ImageUrl.slice(imageIndex - 8, imageIndex).map((item) => (
-              <Grid xs={6} sm={6} md={4} lg={3} key={item.title}>
+              <Grid xs={12} sm={6} md={4} lg={3} key={item.title}>
                 <Link href={`/${item.url}`}>
                   <motion.div
                     initial={{
@@ -184,9 +184,7 @@ export default function Gallery() {
                     <img
                       src={item.src}
                       alt={item.title}
-                      height={300}
-                      width={500}
-                      className="rounded-3xl"
+                      className="rounded-3xl w-full h-full"
                     />
                   </motion.div>
                 </Link>

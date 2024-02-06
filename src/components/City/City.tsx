@@ -347,9 +347,9 @@ export default function City() {
                                 opacity: 0,
                               }}
                               className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
-                              // onClick={() => {
-                              //   setImageCover(img);
-                              // }}
+                            // onClick={() => {
+                            //   setImageCover(img);
+                            // }}
                             >
                               <img
                                 src={img.src}
@@ -413,9 +413,9 @@ export default function City() {
                                 opacity: 0,
                               }}
                               className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
-                              // onClick={() => {
-                              //   setImageCover(img);
-                              // }}
+                            // onClick={() => {
+                            //   setImageCover(img);
+                            // }}
                             >
                               <img
                                 src={img.src}
@@ -479,14 +479,14 @@ export default function City() {
                                 opacity: 0,
                               }}
                               className="md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 relative cursor-pointer"
-                              // onClick={() => {
-                              //   setImageCover(img);
-                              // }}
+                            // onClick={() => {
+                            //   setImageCover(img);
+                            // }}
                             >
                               <img
                                 src={img.src}
                                 alt="image_1"
-                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
+                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72"
                               />
                               <div
                                 className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
