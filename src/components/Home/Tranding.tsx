@@ -111,7 +111,7 @@ export default function Tranding() {
     );
   };
   return (
-    <div className="min-w-full mt-32">
+    <div className="min-w-full mt-32 hidden lg:block">
       <div className="md:px-32 min-[0px]:px-8">
         <div className="md:pb-6 min-[0px]:pb-5">
           <motion.div
