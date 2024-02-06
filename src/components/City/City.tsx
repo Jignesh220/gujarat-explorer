@@ -181,7 +181,7 @@ export default function City() {
                 key={item.id}
                 src={item.src}
                 alt="Cover_Image"
-                className="bg-black object-cover"
+                className="bg-black object-cover min-h-[99vh]"
               />
             );
           })}

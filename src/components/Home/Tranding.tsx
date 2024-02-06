@@ -228,7 +228,7 @@ export default function Tranding() {
                           <img
                             src={city.coverImageUrl}
                             alt={`${city.cityName}_cover`}
-                            className="rounded-3xl object-cover"
+                            className="rounded-3xl object-cover md:w-[700px] w-250"
                           />
                           <div className="md:hidden min-[0px]:flex min-h-full min-w-full bg-black opacity-50 absolute rounded-3xl"></div>
                           <motion.div

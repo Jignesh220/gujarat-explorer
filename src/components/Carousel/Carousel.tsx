@@ -99,7 +99,7 @@ export default function Carousel() {
                   <img
                     src={item.src}
                     alt="Image 1"
-                    className="md:rounded-3xl min-[0px]:rounded-2xl object-cover bg-black"
+                    className="md:rounded-3xl md:h-[700px] h-[300px] min-[0px]:rounded-2xl object-cover bg-black"
                   />
                   <motion.div
                     className="min-h-full min-w-full absolute rounded-3xl flex md:p-10 min-[0px]:p-1 group"
