@@ -1,9 +1,10 @@
 import firebase from "firebase/compat/app";
+import { Firestore } from "firebase/firestore";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-// import { getStorage } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -17,11 +18,12 @@ const config = {
 
 // firebase.initializeApp(config);
 firebase.initializeApp(config);
-var auth = firebase.auth();
-var provider = new firebase.auth.GoogleAuthProvider();
+const firebaseApp = initializeApp(config);
+const auth = firebase.auth();
+// var provider = new firebase.auth.GoogleAuthProvider();
 const db = firebase.firestore();
-const app = initializeApp(config);
-const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
+// const auth = getAuth(firebaseApp);
 // const analytics = getAnalytics(app);
-// const storage = getStorage(config);
-export { auth, provider, db, app, analytics };
+const analytics = isSupported().then((yes) => (yes ? getAnalytics(firebaseApp) : null));
+const storage = getStorage();
+export { auth, db, firebaseApp, storage, config, analytics };
