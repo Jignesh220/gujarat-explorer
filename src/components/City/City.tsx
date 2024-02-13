@@ -401,13 +401,17 @@ export default function City() {
                               }}
                               initial={{
                                 opacity: 0,
+                                x: -50,
+                                scale: 0.9,
                               }}
                               whileInView={{
                                 opacity: 1,
+                                x: 0,
+                                scale: 1,
                               }}
                               transition={{
-                                duration: 0.8,
-                                ease: "easeIn",
+                                duration: 1,
+                                ease: "easeInOut",
                               }}
                               exit={{
                                 opacity: 0,
@@ -420,7 +424,7 @@ export default function City() {
                               <img
                                 src={img.src}
                                 alt="image_1"
-                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute"
+                                className="object-cover md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
                                 className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
@@ -467,13 +471,17 @@ export default function City() {
                               }}
                               initial={{
                                 opacity: 0,
+                                x: -50,
+                                scale: 0.9,
                               }}
                               whileInView={{
                                 opacity: 1,
+                                x: 0,
+                                scale: 1,
                               }}
                               transition={{
-                                duration: 0.8,
-                                ease: "easeIn",
+                                duration: 1,
+                                ease: "easeInOut",
                               }}
                               exit={{
                                 opacity: 0,
@@ -486,7 +494,7 @@ export default function City() {
                               <img
                                 src={img.src}
                                 alt="image_1"
-                                className="object-cover md:rounded-3xl min-[0px]:rounded-2xl absolute md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72"
+                                className="object-cover md:w-52 md:h-80 min-[0px]:w-44 min-[0px]:h-72 md:rounded-3xl min-[0px]:rounded-2xl absolute"
                               />
                               <div
                                 className="min-h-full min-w-full absolute md:rounded-3xl min-[0px]:rounded-2xl"
